@@ -26,3 +26,8 @@
 2026-10-20 17:53:34 [ot-produccion] spine2 proteccion local retiro la politica: recalculando
 2026-10-20 17:53:37 [ot-produccion] leaf2<->leaf4 via spine1 (RTT 0.54 ms) segs [fc00:0:1::e,fc00:0:14::d4]
 2026-10-20 17:54:46 [servicio] VLAN 30 -> VNI 10030 (Video-Analitica) aprovisionado en ['leaf1', 'leaf2', 'leaf3', 'leaf4']
+2026-10-20 18:32:20 [ot-produccion] spine1 proteccion local retiro la politica: recalculando
+2026-10-20 18:32:24 [ot-produccion] leaf2<->leaf4 via spine2 (RTT 0.85 ms) segs [fc00:0:2::e,fc00:0:14::d4]
+2026-10-20 18:32:32 controlador escuchando en :8181 (0 intenciones)
+2026-10-20 18:33:08 [captura] leaf2<->leaf4 via spine1 (RTT 0.74 ms) segs [fc00:0:1::e,fc00:0:14::d4]
+2026-10-20 18:33:15 [captura] eliminada; trafico vuelve a OSPF ECMP

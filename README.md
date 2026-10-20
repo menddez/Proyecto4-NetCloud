@@ -24,8 +24,10 @@ en políticas SRv6. Todo automatizado con **Python + Netmiko + Jinja2**.
 | `gns3/` | `netcloud.gns3` (topología) y `crear_topologia_gns3.py` (la crea vía API REST) |
 | `scripts/arranque.sh` | Arranque diario dentro de la GNS3 VM (red de gestión + despliegue) |
 | `scripts/controlador.sh` | Inicia/reinicia el controlador en segundo plano |
+| `scripts/levantar_lab.ps1` | **Desde Windows**: levanta GNS3, la VM, el proyecto, la configuración y el controlador en un paso |
+| `DEFENSA.md` | Guía de la demostración en vivo y lista de evidencias |
 | `scripts/prueba_ibn.sh` | Demostración completa SRv6 + IBN + falla de spine (para la defensa) |
-| `evidence/` | Salidas de verificación y reconvergencia |
+| `evidence/` | Salidas de verificación, reconvergencia, IBN, bitácora del controlador y `capturas/*.pcap` (Wireshark) |
 
 Este repositorio (Windows) es la fuente de verdad; la GNS3 VM tiene una copia en `~/netcloud-secure`.
 Sincronizar desde PowerShell/Git Bash en la carpeta del repo:

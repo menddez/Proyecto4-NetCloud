@@ -33,12 +33,14 @@ from deploy import push_text
 
 PORT = 8181
 TABLE = 100          # tabla de politicas SRv6: zebra no la gestiona
-CHECK_EVERY = 10     # segundos entre comprobaciones del lazo cerrado
+CHECK_EVERY = 5      # segundos entre comprobaciones del lazo cerrado
 STATE_FILE = ROOT / "automation" / "controller_state.json"
 LOG_FILE = ROOT / "evidence" / "controller.log"
 NAME_RE = re.compile(r"^[\w-]{1,40}$")
 # ponytail: un lock global serializa todo Netmiko; suficiente para 10 nodos de laboratorio
 LOCK = threading.Lock()
+# Una operacion completa sobre intenciones (programar src y dst) es atomica frente al monitor
+INTENTS_LOCK = threading.RLock()
 
 topo = load_topology()
 state = {"intents": {}, "services": []}
@@ -95,22 +97,47 @@ def measure(src, dst):
     return rtts
 
 
+def guard_pid(lb):
+    return f"/tmp/srv6-guard-{lb}.pid"
+
+
 def steer_cmds(local, remote, spine):
-    """Comandos en `local` para enviar su VXLAN hacia `remote` via `spine` con SRv6."""
+    """Comandos en `local` para enviar su VXLAN hacia `remote` via `spine` con SRv6.
+
+    Incluye un guardian local (proteccion tipo BFD/TI-LFA): sondea el spine cada
+    100 ms y, tras 2 fallos (~0.8 s), retira la politica para que el trafico caiga
+    al ECMP de OSPF, que ya reconvergio. Luego el controlador reoptimiza."""
     lb = topo["leafs"][remote]["loopback"]
     uplink = f"eth{int(spine.replace('spine', '')) - 1}"   # convencion: leaf ethN-1 -> spineN
-    return [f"ip rule del to {lb}/32 table {TABLE} 2>/dev/null; ip rule add to {lb}/32 table {TABLE} pref 100",
+    guard = (f"(f=0; while sleep 0.1; do if ping -6 -c1 -W 0.3 {sid(spine, '1')} >/dev/null 2>&1; "
+             f"then f=0; else f=$((f+1)); fi; if [ $f -ge 2 ]; then ip rule del to {lb}/32 table {TABLE}; "
+             f"break; fi; done) </dev/null >/dev/null 2>&1 & echo $! > {guard_pid(lb)}")
+    return [f"kill $(cat {guard_pid(lb)} 2>/dev/null) 2>/dev/null; "
+            f"ip rule del to {lb}/32 table {TABLE} 2>/dev/null; ip rule add to {lb}/32 table {TABLE} pref 100",
             f"ip route replace {lb}/32 table {TABLE} encap seg6 mode encap "
-            f"segs {sid(spine, 'e')},{sid(remote, 'd4')} dev {uplink}"]
+            f"segs {sid(spine, 'e')},{sid(remote, 'd4')} dev {uplink}",
+            guard]
 
 
 def unsteer_cmds(local, remote):
     lb = topo["leafs"][remote]["loopback"]
-    return [f"ip rule del to {lb}/32 table {TABLE} 2>/dev/null; "
+    return [f"kill $(cat {guard_pid(lb)} 2>/dev/null) 2>/dev/null; "
+            f"ip rule del to {lb}/32 table {TABLE} 2>/dev/null; "
             f"ip route del {lb}/32 table {TABLE} 2>/dev/null; true"]
 
 
+def policy_ok(local, remote):
+    """True si la politica de `local` hacia `remote` sigue instalada (el guardian no la retiro)."""
+    lb = topo["leafs"][remote]["loopback"]
+    return run(local, [f"ip rule | grep -c 'to {lb} lookup {TABLE}'"])[0].strip() not in ("", "0")
+
+
 def apply_intent(name):
+    with INTENTS_LOCK:
+        return _apply_intent(name)
+
+
+def _apply_intent(name):
     it = state["intents"][name]
     rtts = measure(it["src"], it["dst"])
     spine = choose_spine(rtts, it["avoid"], it["max_rtt_ms"])
@@ -139,20 +166,30 @@ def monitor():
     """Lazo cerrado IBN: si el spine elegido deja de responder, recalcula."""
     while True:
         time.sleep(CHECK_EVERY)
-        for name, it in list(state["intents"].items()):
+        for name in list(state["intents"]):
             try:
-                if it.get("spine"):
-                    # dos sondeos separados: una sola muestra perdida no dispara un cambio de ruta
-                    probe = f"ping -6 -c 2 -i 0.2 -W 1 {sid(it['spine'], '1')}"
-                    if parse_rtt(run(it["src"], [probe])[0]) is not None:
-                        continue
-                    time.sleep(2)
-                    if parse_rtt(run(it["src"], [probe])[0]) is not None:
-                        continue
-                    log(f"[{name}] {it['spine']} no responde: recalculando")
-                apply_intent(name)
+                with INTENTS_LOCK:
+                    check_intent(name)
             except Exception as e:
                 log(f"[{name}] error en el monitor: {e}")
+
+
+def check_intent(name):
+    it = state["intents"].get(name)
+    if it is None:          # eliminada mientras el monitor esperaba el candado
+        return
+    if it.get("spine"):
+        guards = policy_ok(it["src"], it["dst"]) and policy_ok(it["dst"], it["src"])
+        # dos sondeos separados: una sola muestra perdida no dispara un cambio de ruta
+        probe = f"ping -6 -c 2 -i 0.2 -W 1 {sid(it['spine'], '1')}"
+        if guards and parse_rtt(run(it["src"], [probe])[0]) is not None:
+            return
+        time.sleep(2)
+        if guards and parse_rtt(run(it["src"], [probe])[0]) is not None:
+            return
+        why = "no responde" if guards else "proteccion local retiro la politica"
+        log(f"[{name}] {it['spine']} {why}: recalculando")
+    apply_intent(name)
 
 
 def node_status(node):
@@ -232,15 +269,17 @@ class Handler(BaseHTTPRequestHandler):
                 return self.reply(200, state["intents"])
             if method == "POST" and p == "/api/intents":
                 it = validate_intent(self.body())
-                state["intents"][it["name"]] = it
-                return self.reply(201, apply_intent(it["name"]))
+                with INTENTS_LOCK:
+                    state["intents"][it["name"]] = it
+                    return self.reply(201, apply_intent(it["name"]))
             if method == "DELETE" and p.startswith("/api/intents/"):
-                it = state["intents"].pop(p.rsplit("/", 1)[1], None)
-                if not it:
-                    return self.reply(404, {"error": "no existe"})
-                run(it["src"], unsteer_cmds(it["src"], it["dst"]))
-                run(it["dst"], unsteer_cmds(it["dst"], it["src"]))
-                save()
+                with INTENTS_LOCK:
+                    it = state["intents"].pop(p.rsplit("/", 1)[1], None)
+                    if not it:
+                        return self.reply(404, {"error": "no existe"})
+                    run(it["src"], unsteer_cmds(it["src"], it["dst"]))
+                    run(it["dst"], unsteer_cmds(it["dst"], it["src"]))
+                    save()
                 log(f"[{it['name']}] eliminada; trafico vuelve a OSPF ECMP")
                 return self.reply(200, {"deleted": it["name"]})
             if method == "POST" and p == "/api/reconcile":

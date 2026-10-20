@@ -8,3 +8,21 @@
 2026-10-20 01:28:31 [ot-lazo-cerrado] spine2 no responde: recalculando
 2026-10-20 01:28:33 [ot-lazo-cerrado] ninguna ruta cumple la intencion {'spine1': None, 'spine2': None}; trafico vuelve a OSPF ECMP
 2026-10-20 01:28:46 [ot-lazo-cerrado] leaf2<->leaf4 via spine2 (RTT 0.69 ms) segs [fc00:0:2::e,fc00:0:14::d4]
+2026-10-20 17:26:38 controlador escuchando en :8181 (0 intenciones)
+2026-10-20 17:26:47 [ot-produccion] leaf2<->leaf4 via spine2 (RTT 0.37 ms) segs [fc00:0:2::e,fc00:0:14::d4]
+2026-10-20 17:27:01 [ot-produccion] spine2 no responde: recalculando
+2026-10-20 17:27:05 [ot-produccion] leaf2<->leaf4 via spine1 (RTT 0.48 ms) segs [fc00:0:1::e,fc00:0:14::d4]
+2026-10-20 17:29:25 controlador escuchando en :8181 (1 intenciones)
+2026-10-20 17:29:26 [ot-produccion] eliminada; trafico vuelve a OSPF ECMP
+2026-10-20 17:29:30 [ot-produccion] leaf2<->leaf4 via spine2 (RTT 0.48 ms) segs [fc00:0:2::e,fc00:0:14::d4]
+2026-10-20 17:29:42 [ot-produccion] spine2 proteccion local retiro la politica: recalculando
+2026-10-20 17:29:45 [ot-produccion] leaf2<->leaf4 via spine1 (RTT 0.41 ms) segs [fc00:0:1::e,fc00:0:14::d4]
+2026-10-20 17:30:55 [ot-produccion] eliminada; trafico vuelve a OSPF ECMP
+2026-10-20 17:51:06 controlador escuchando en :8181 (0 intenciones)
+2026-10-20 17:51:16 [ot-produccion] leaf2<->leaf4 via spine1 (RTT 0.7 ms) segs [fc00:0:1::e,fc00:0:14::d4]
+2026-10-20 17:51:17 [ot-produccion] leaf2<->leaf4 via spine2 (RTT 0.57 ms) segs [fc00:0:2::e,fc00:0:14::d4]
+2026-10-20 17:53:14 controlador escuchando en :8181 (0 intenciones)
+2026-10-20 17:53:19 [ot-produccion] leaf2<->leaf4 via spine2 (RTT 0.29 ms) segs [fc00:0:2::e,fc00:0:14::d4]
+2026-10-20 17:53:34 [ot-produccion] spine2 proteccion local retiro la politica: recalculando
+2026-10-20 17:53:37 [ot-produccion] leaf2<->leaf4 via spine1 (RTT 0.54 ms) segs [fc00:0:1::e,fc00:0:14::d4]
+2026-10-20 17:54:46 [servicio] VLAN 30 -> VNI 10030 (Video-Analitica) aprovisionado en ['leaf1', 'leaf2', 'leaf3', 'leaf4']

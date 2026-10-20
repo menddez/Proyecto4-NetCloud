@@ -1,0 +1,58 @@
+# Aprovisionamiento automatico de servicio via controlador - 2026-10-20 17:54:39
+
+===== leaf1# show evpn vni (antes) =====
+VNI        Type VxLAN IF              # MACs   # ARPs   # Remote VTEPs  Tenant VRF                           
+10010      L2   vxlan10010            2        0        3               default                              
+10020      L2   vxlan10020            2        0        3               default                              
+
+===== POST /api/services =====
+{
+  "vlan": 30,
+  "vni": 10030,
+  "name": "Video-Analitica"
+}
+real	0m6.584s
+user	0m0.005s
+sys	0m0.003s
+
+===== leaf1# show evpn vni (despues) =====
+VNI        Type VxLAN IF              # MACs   # ARPs   # Remote VTEPs  Tenant VRF                           
+10010      L2   vxlan10010            2        0        3               default                              
+10030      L2   vxlan10030            0        0        3               default                              
+10020      L2   vxlan10020            2        0        3               default                              
+===== leaf3# show evpn vni (despues) =====
+VNI        Type VxLAN IF              # MACs   # ARPs   # Remote VTEPs  Tenant VRF                           
+10010      L2   vxlan10010            2        0        3               default                              
+10030      L2   vxlan10030            0        0        3               default                              
+10020      L2   vxlan10020            2        0        3               default                              
+===== leaf1# show bgp l2vpn evpn route type multicast (VNI 10030) =====
+                    10.0.0.11                          32768 i
+                    ET:8 RT:65000:10030
+Route Distinguisher: 10.0.0.12:2
+* i[3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                0    100      0 i
+--
+                    10.0.0.12                0    100      0 i
+                    RT:65000:10030 ET:8
+*>i[3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                0    100      0 i
+                    RT:65000:10030 ET:8
+Route Distinguisher: 10.0.0.13:2
+* i[3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                0    100      0 i
+--
+                    10.0.0.13                0    100      0 i
+                    RT:65000:10030 ET:8
+* i[3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                0    100      0 i
+                    RT:65000:10030 ET:8
+Route Distinguisher: 10.0.0.14:2
+* i[3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                0    100      0 i
+--
+                    10.0.0.14                0    100      0 i
+                    RT:65000:10030 ET:8
+*>i[3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                0    100      0 i
+                    RT:65000:10030 ET:8
+

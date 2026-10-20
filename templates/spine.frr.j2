@@ -1,5 +1,13 @@
 hostname {{ name }}
 !
+bfd
+ profile rapido
+  detect-multiplier 3
+  receive-interval 100
+  transmit-interval 100
+ exit
+exit
+!
 interface lo
  ip ospf area 0.0.0.0
 !
@@ -13,10 +21,13 @@ interface {{ l.iface }}
  ip ospf area 0.0.0.0
  ip ospf network point-to-point
  ip ospf dead-interval minimal hello-multiplier {{ hello_multiplier }}
+ ip ospf bfd
+ ip ospf bfd profile rapido
  ipv6 ospf6 area 0
  ipv6 ospf6 network point-to-point
  ipv6 ospf6 hello-interval 1
  ipv6 ospf6 dead-interval 3
+ ipv6 ospf6 bfd profile rapido
 !
 {% endfor %}
 router ospf

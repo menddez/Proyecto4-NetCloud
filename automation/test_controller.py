@@ -16,7 +16,9 @@ assert choose_spine({"spine1": None, "spine2": 6.0}, [], None) == "spine2"   # s
 assert choose_spine(rtts, ["spine1"], 5) is None                      # nada cumple
 
 assert sid("spine2", "e") == "fc00:0:2::e" and sid("leaf4", "d4") == "fc00:0:14::d4"
-assert "segs fc00:0:2::e,fc00:0:14::d4 dev eth1" in steer_cmds("leaf2", "leaf4", "spine2")[1]
+cmds = steer_cmds("leaf2", "leaf4", "spine2")
+assert "segs fc00:0:2::e,fc00:0:14::d4 dev eth1" in cmds[1]
+assert "ping -6 -c1 -W 0.3 fc00:0:2::1" in cmds[2] and "ip rule del to 10.0.0.14/32" in cmds[2]
 
 for bad in ({"name": "x y", "src": "leaf1", "dst": "leaf2"},
             {"name": "a", "src": "leaf1", "dst": "leaf1"},

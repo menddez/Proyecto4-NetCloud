@@ -6,8 +6,9 @@ from datetime import datetime
 from common import ROOT, connect, load_topology
 
 VTY = {
-    "spine": ["show ip ospf neighbor", "show bgp l2vpn evpn summary"],
+    "spine": ["show ip ospf neighbor", "show bgp l2vpn evpn summary", "show ipv6 ospf6 neighbor"],
     "leaf": ["show ip ospf neighbor", "show bgp l2vpn evpn summary", "show evpn vni",
+             "show ipv6 ospf6 neighbor", "show ipv6 route ospf6",
              "show bgp l2vpn evpn route type macip", "show bgp l2vpn evpn route type multicast"],
 }
 PINGS = [("host1", "10.10.0.13", "VLAN10 DC1 -> Planta (L2 extendida)"),
@@ -25,6 +26,9 @@ def main():
             for cmd in VTY[key]:
                 lines.append(f"\n===== {name}# {cmd} =====")
                 lines.append(conn.send_command(f'vtysh -c "{cmd}"', read_timeout=30))
+            lines.append(f"
+===== {name}# SIDs SRv6 locales (ip -6 route | seg6local) =====")
+            lines.append(conn.send_command("ip -6 route show | grep seg6local"))
             if key == "leaf":
                 lines.append(f"\n===== {name}# bridge fdb show (entradas VXLAN) =====")
                 lines.append(conn.send_command("bridge fdb show | grep -i vxlan | head -30"))

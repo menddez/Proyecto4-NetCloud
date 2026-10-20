@@ -1,0 +1,12 @@
+# SRv6 (plano de datos del kernel). Locator {{ sr }}:{{ n }}::/48 anunciado por OSPFv3 desde sr0
+sed -i 's/^ospf6d=no/ospf6d=yes/' /etc/frr/daemons
+pidof ospf6d >/dev/null || /usr/lib/frr/ospf6d -d -F traditional -A ::1 </dev/null >/dev/null 2>&1
+sysctl -qw net.ipv6.conf.all.forwarding=1
+sysctl -qw net.ipv6.conf.all.seg6_enabled=1
+sysctl -qw net.ipv6.conf.default.seg6_enabled=1
+ip link add sr0 type dummy 2>/dev/null || true
+ip link set sr0 up
+for i in /proc/sys/net/ipv6/conf/*/seg6_enabled; do echo 1 > $i; done
+ip -6 addr replace {{ sr }}:{{ n }}::1/48 dev sr0
+# SID End: el nodo acepta ser un salto del segment list
+ip -6 route replace {{ sr }}:{{ n }}::e/128 encap seg6local action End dev sr0

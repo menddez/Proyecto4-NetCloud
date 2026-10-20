@@ -19,10 +19,16 @@ def all_nodes(topo):
     return nodes
 
 
+def node_num(node):
+    """Numero de nodo para SRv6 = ultimo octeto del loopback (spine1=1, leaf3=13)."""
+    return int(node["loopback"].split(".")[-1])
+
+
 def build_contexts(topo):
     """Calcula direccionamiento: enlace spine s <-> leaf l = 10.1.s.(2*(l-1))/31."""
     asn, hm = topo["asn"], topo["hello_multiplier"]
     spines, leafs, vlans = topo["spines"], topo["leafs"], topo["vlans"]
+    sr = topo["srv6_prefix"]
     ctx = {}
     for sname, s in spines.items():
         sn = int(sname.replace("spine", ""))
@@ -30,6 +36,7 @@ def build_contexts(topo):
                   "ip": f"10.1.{sn}.{2 * (int(ln.replace('leaf', '')) - 1)}",
                   "peer": ln} for ln in leafs]
         ctx[sname] = {"role": "spine", "name": sname, "loopback": s["loopback"], "asn": asn,
+                      "sr": sr, "n": node_num(s),
                       "hello_multiplier": hm, "links": links,
                       "neighbors": [{"ip": l["loopback"], "name": n} for n, l in leafs.items()]}
     for lname, l in leafs.items():
@@ -38,6 +45,7 @@ def build_contexts(topo):
                   "ip": f"10.1.{int(sp.replace('spine', ''))}.{2 * (ln - 1) + 1}",
                   "peer": sp} for sp in spines]
         ctx[lname] = {"role": "leaf", "name": lname, "loopback": l["loopback"], "asn": asn,
+                      "sr": sr, "n": node_num(l),
                       "hello_multiplier": hm, "links": links, "vlans": vlans,
                       "spines": [{"ip": s["loopback"], "name": n} for n, s in spines.items()],
                       "access_port": l["access_port"], "access_vlan": l["vlan"]}
@@ -48,7 +56,7 @@ def build_contexts(topo):
 
 # Al arrancar el contenedor zebra puede caer y watchfrr tarda ~60 s en revivirlo;
 # sin zebra, vtysh -f falla en silencio. Se espera hasta 100 s antes de aplicar.
-FRR_APPLY = ("for i in $(seq 100); do pgrep -x zebra >/dev/null && break; sleep 1; done; "
+FRR_APPLY = ("for i in $(seq 100); do pidof zebra >/dev/null && break; sleep 1; done; "
              "vtysh -f /etc/frr/frr.conf")
 
 # rol -> lista de (plantilla, ruta remota, comando de aplicacion)

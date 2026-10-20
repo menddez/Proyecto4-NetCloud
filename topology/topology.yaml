@@ -4,6 +4,8 @@ hello_multiplier: 10          # OSPF: hello 100 ms, dead 1 s (reconvergencia < 1
 credentials:
   username: root
   password: gsm12345
+srv6_prefix: "fc00:0"        # nodo N (ultimo octeto del loopback): locator fc00:0:N::/48
+                              #   ::1 direccion IPv6, ::e SID End, ::d4 SID End.DX4 (solo leafs)
 vlans:
   - {id: 10, vni: 10010, name: IT-Oficinas,  subnet: 10.10.0.0/24}
   - {id: 20, vni: 10020, name: OT-Produccion, subnet: 10.20.0.0/24}

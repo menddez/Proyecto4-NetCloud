@@ -1,0 +1,10 @@
+2026-10-20 01:22:25 controlador escuchando en :8181 (0 intenciones)
+2026-10-20 01:22:40 [ot-produccion] leaf2<->leaf4 via spine2 (RTT 1.14 ms) segs [fc00:0:2::e,fc00:0:14::d4]
+2026-10-20 01:23:26 [ot-produccion] eliminada; trafico vuelve a OSPF ECMP
+2026-10-20 01:23:30 [ot-lazo-cerrado] leaf2<->leaf4 via spine1 (RTT 0.88 ms) segs [fc00:0:1::e,fc00:0:14::d4]
+2026-10-20 01:27:23 [ot-lazo-cerrado] spine1 no responde: recalculando
+2026-10-20 01:27:25 [ot-lazo-cerrado] ninguna ruta cumple la intencion {'spine1': None, 'spine2': None}; trafico vuelve a OSPF ECMP
+2026-10-20 01:27:38 [ot-lazo-cerrado] leaf2<->leaf4 via spine2 (RTT 1.27 ms) segs [fc00:0:2::e,fc00:0:14::d4]
+2026-10-20 01:28:31 [ot-lazo-cerrado] spine2 no responde: recalculando
+2026-10-20 01:28:33 [ot-lazo-cerrado] ninguna ruta cumple la intencion {'spine1': None, 'spine2': None}; trafico vuelve a OSPF ECMP
+2026-10-20 01:28:46 [ot-lazo-cerrado] leaf2<->leaf4 via spine2 (RTT 0.69 ms) segs [fc00:0:2::e,fc00:0:14::d4]

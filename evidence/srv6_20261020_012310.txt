@@ -1,0 +1,90 @@
+# Evidencia SRv6 + controlador IBN - 2026-10-20 01:23:10
+
+===== GET /api/intents =====
+{
+  "ot-produccion": {
+    "name": "ot-produccion",
+    "src": "leaf2",
+    "dst": "leaf4",
+    "avoid": [
+      "spine1"
+    ],
+    "max_rtt_ms": 10,
+    "rtts": {
+      "spine1": 0.81,
+      "spine2": 0.7
+    },
+    "updated": "01:22:39",
+    "spine": "spine2",
+    "segments": "fc00:0:2::e,fc00:0:14::d4",
+    "status": "ACTIVA"
+  }
+}
+
+===== leaf2# ip rule | ip route show table 100 =====
+100:	from all to 10.0.0.14 lookup 100
+10.0.0.14  encap seg6 mode encap segs 2 [ fc00:0:2::e fc00:0:14::d4 ] dev eth1 scope link 
+===== leaf2# SIDs locales =====
+fc00:0:12::e  encap seg6local action End dev sr0 metric 1024 pref medium
+fc00:0:12::d4  encap seg6local action End.DX4 nh4 10.0.0.12 dev sr0 metric 1024 pref medium
+
+===== leaf4# ip rule | ip route show table 100 =====
+100:	from all to 10.0.0.12 lookup 100
+10.0.0.12  encap seg6 mode encap segs 2 [ fc00:0:2::e fc00:0:12::d4 ] dev eth1 scope link 
+===== leaf4# SIDs locales =====
+fc00:0:14::e  encap seg6local action End dev sr0 metric 1024 pref medium
+fc00:0:14::d4  encap seg6local action End.DX4 nh4 10.0.0.14 dev sr0 metric 1024 pref medium
+
+===== spine2# show ipv6 route ospf6 =====
+Codes: K - kernel route, C - connected, S - static, R - RIPng,
+       O - OSPFv3, I - IS-IS, B - BGP, N - NHRP, T - Table,
+       v - VNC, V - VNC-Direct, A - Babel, F - PBR,
+       f - OpenFabric,
+       > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+       t - trapped, o - offload failure
+
+O>* fc00:0:1::/48 [110/30] via fe80::42:bff:fe08:8601, eth2, weight 1, 00:00:55
+  *                        via fe80::42:5bff:fed9:8101, eth0, weight 1, 00:00:55
+  *                        via fe80::42:62ff:fe8d:301, eth1, weight 1, 00:00:55
+  *                        via fe80::42:71ff:fec6:4d01, eth3, weight 1, 00:00:55
+O   fc00:0:2::/48 [110/10] is directly connected, sr0, weight 1, 00:00:55
+O>* fc00:0:11::/48 [110/20] via fe80::42:5bff:fed9:8101, eth0, weight 1, 00:00:55
+O>* fc00:0:12::/48 [110/20] via fe80::42:62ff:fe8d:301, eth1, weight 1, 00:00:55
+O>* fc00:0:13::/48 [110/20] via fe80::42:bff:fe08:8601, eth2, weight 1, 00:00:55
+O>* fc00:0:14::/48 [110/20] via fe80::42:71ff:fec6:4d01, eth3, weight 1, 00:00:55
+
+===== host2: ping 10.20.0.14 =====
+PING 10.20.0.14 (10.20.0.14) 56(84) bytes of data.
+64 bytes from 10.20.0.14: icmp_seq=1 ttl=64 time=2.39 ms
+64 bytes from 10.20.0.14: icmp_seq=2 ttl=64 time=1.40 ms
+64 bytes from 10.20.0.14: icmp_seq=3 ttl=64 time=1.49 ms
+64 bytes from 10.20.0.14: icmp_seq=4 ttl=64 time=1.71 ms
+
+--- 10.20.0.14 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3006ms
+rtt min/avg/max/mdev = 1.404/1.746/2.386/0.385 ms
+
+===== spine2 eth1: tcpdump (VXLAN VNI 10020 dentro de SRv6/SRH) =====
+tcpdump: listening on eth1, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+01:22:50.709073 IP6 (hlim 64, next-header Routing (43) payload length: 174) fc00:0:12::1 > fc00:0:2::e: RT6 (len=4, type=4, segleft=1, last-entry=1, flags=0x0, tag=0, [0]fc00:0:14::d4, [1]fc00:0:2::e) IP (tos 0x0, ttl 64, id 57756, offset 0, flags [none], proto UDP (17), length 134)
+    10.0.0.12.59709 > 10.0.0.14.4789: VXLAN, flags [I] (0x08), vni 10020
+IP (tos 0x0, ttl 64, id 45767, offset 0, flags [DF], proto ICMP (1), length 84)
+    10.20.0.12 > 10.20.0.14: ICMP echo request, id 46146, seq 1, length 64
+01:22:50.710855 IP6 (hlim 63, next-header Routing (43) payload length: 118) fc00:0:14::1 > fc00:0:12::d4: RT6 (len=4, type=4, segleft=0, last-entry=1, flags=0x0, tag=0, [0]fc00:0:12::d4, [1]fc00:0:2::e) IP (tos 0x0, ttl 64, id 29120, offset 0, flags [none], proto UDP (17), length 78)
+    10.0.0.14.47425 > 10.0.0.12.4789: VXLAN, flags [I] (0x08), vni 10020
+ARP, Ethernet (len 6), IPv4 (len 4), Request who-has 10.20.0.12 tell 10.20.0.14, length 28
+01:22:50.712303 IP6 (hlim 64, next-header Routing (43) payload length: 118) fc00:0:12::1 > fc00:0:2::e: RT6 (len=4, type=4, segleft=1, last-entry=1, flags=0x0, tag=0, [0]fc00:0:14::d4, [1]fc00:0:2::e) IP (tos 0x0, ttl 64, id 57758, offset 0, flags [none], proto UDP (17), length 78)
+    10.0.0.12.47425 > 10.0.0.14.4789: VXLAN, flags [I] (0x08), vni 10020
+ARP, Ethernet (len 6), IPv4 (len 4), Reply 10.20.0.12 is-at 02:42:c3:b4:ae:00, length 28
+01:22:50.712870 IP6 (hlim 63, next-header Routing (43) payload length: 174) fc00:0:14::1 > fc00:0:12::d4: RT6 (len=4, type=4, segleft=0, last-entry=1, flags=0x0, tag=0, [0]fc00:0:12::d4, [1]fc00:0:2::e) IP (tos 0x0, ttl 64, id 29123, offset 0, flags [none], proto UDP (17), length 134)
+    10.0.0.14.59709 > 10.0.0.12.4789: VXLAN, flags [I] (0x08), vni 10020
+IP (tos 0x0, ttl 64, id 6595, offset 0, flags [none], proto ICMP (1), length 84)
+    10.20.0.14 > 10.20.0.12: ICMP echo reply, id 46146, seq 1, length 64
+4 packets captured
+6 packets received by filter
+0 packets dropped by kernel
+
+===== spine1 eth1: tcpdump udp 4789 (mismo intervalo) =====
+0 packets captured
+0 packets received by filter
+0 packets dropped by kernel

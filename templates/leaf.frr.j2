@@ -3,6 +3,9 @@ hostname {{ name }}
 interface lo
  ip ospf area 0.0.0.0
 !
+interface sr0
+ ipv6 ospf6 area 0
+!
 {% for l in links %}
 interface {{ l.iface }}
  description to-{{ l.peer }}
@@ -10,10 +13,17 @@ interface {{ l.iface }}
  ip ospf area 0.0.0.0
  ip ospf network point-to-point
  ip ospf dead-interval minimal hello-multiplier {{ hello_multiplier }}
+ ipv6 ospf6 area 0
+ ipv6 ospf6 network point-to-point
+ ipv6 ospf6 hello-interval 1
+ ipv6 ospf6 dead-interval 3
 !
 {% endfor %}
 router ospf
  ospf router-id {{ loopback }}
+!
+router ospf6
+ ospf6 router-id {{ loopback }}
 !
 router bgp {{ asn }}
  bgp router-id {{ loopback }}

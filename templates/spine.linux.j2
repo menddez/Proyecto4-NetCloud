@@ -1,2 +1,3 @@
 ip addr add {{ loopback }}/32 dev lo 2>/dev/null || true
 for i in /sys/class/net/eth*; do ip link set "$(basename $i)" up; done
+{% include "srv6.linux.j2" %}

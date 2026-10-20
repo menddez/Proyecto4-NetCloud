@@ -1,0 +1,33 @@
+hostname {{ name }}
+!
+interface lo
+ ip ospf area 0.0.0.0
+!
+{% for l in links %}
+interface {{ l.iface }}
+ description to-{{ l.peer }}
+ ip address {{ l.ip }}/31
+ ip ospf area 0.0.0.0
+ ip ospf network point-to-point
+ ip ospf dead-interval minimal hello-multiplier {{ hello_multiplier }}
+!
+{% endfor %}
+router ospf
+ ospf router-id {{ loopback }}
+!
+router bgp {{ asn }}
+ bgp router-id {{ loopback }}
+ no bgp default ipv4-unicast
+ neighbor SPINES peer-group
+ neighbor SPINES remote-as {{ asn }}
+ neighbor SPINES update-source lo
+ neighbor SPINES timers 3 9
+{% for s in spines %}
+ neighbor {{ s.ip }} peer-group SPINES
+{% endfor %}
+ !
+ address-family l2vpn evpn
+  neighbor SPINES activate
+  advertise-all-vni
+ exit-address-family
+!

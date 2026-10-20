@@ -1,0 +1,22 @@
+# Fuente unica de verdad de la topologia (Entrega 1)
+asn: 65000
+hello_multiplier: 10          # OSPF: hello 100 ms, dead 1 s (reconvergencia < 1 s)
+credentials:
+  username: root
+  password: gsm12345
+vlans:
+  - {id: 10, vni: 10010, name: IT-Oficinas,  subnet: 10.10.0.0/24}
+  - {id: 20, vni: 10020, name: OT-Produccion, subnet: 10.20.0.0/24}
+spines:
+  spine1: {loopback: 10.0.0.1, mgmt: 192.168.122.11}
+  spine2: {loopback: 10.0.0.2, mgmt: 192.168.122.12}
+leafs:
+  leaf1: {loopback: 10.0.0.11, mgmt: 192.168.122.21, site: DC1-Guatemala, access_port: eth2, vlan: 10}
+  leaf2: {loopback: 10.0.0.12, mgmt: 192.168.122.22, site: DC1-Guatemala, access_port: eth2, vlan: 20}
+  leaf3: {loopback: 10.0.0.13, mgmt: 192.168.122.23, site: DC2-Planta,    access_port: eth2, vlan: 10}
+  leaf4: {loopback: 10.0.0.14, mgmt: 192.168.122.24, site: DC2-Planta,    access_port: eth2, vlan: 20}
+hosts:
+  host1: {mgmt: 192.168.122.31, leaf: leaf1, ip: 10.10.0.11/24}
+  host2: {mgmt: 192.168.122.32, leaf: leaf2, ip: 10.20.0.12/24}
+  host3: {mgmt: 192.168.122.33, leaf: leaf3, ip: 10.10.0.13/24}
+  host4: {mgmt: 192.168.122.34, leaf: leaf4, ip: 10.20.0.14/24}

@@ -1,0 +1,14 @@
+# Loopback (origen de los tuneles VXLAN)
+ip addr add {{ loopback }}/32 dev lo 2>/dev/null || true
+for i in /sys/class/net/eth*; do ip link set "$(basename $i)" up; done
+{% for v in vlans %}
+# VLAN {{ v.id }} ({{ v.name }}) -> VNI {{ v.vni }}
+ip link add br{{ v.id }} type bridge 2>/dev/null || true
+ip link add vxlan{{ v.vni }} type vxlan id {{ v.vni }} local {{ loopback }} dstport 4789 nolearning 2>/dev/null || true
+ip link set vxlan{{ v.vni }} master br{{ v.id }}
+ip link set br{{ v.id }} up
+ip link set vxlan{{ v.vni }} up
+{% endfor %}
+# Puerto de acceso hacia el host (VLAN {{ access_vlan }})
+ip link set {{ access_port }} master br{{ access_vlan }}
+ip link set {{ access_port }} up

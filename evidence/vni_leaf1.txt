@@ -1,0 +1,3 @@
+VNI        Type VxLAN IF              # MACs   # ARPs   # Remote VTEPs  Tenant VRF                           
+10010      L2   vxlan10010            2        0        3               default                              
+10020      L2   vxlan10020            2        0        3               default                              

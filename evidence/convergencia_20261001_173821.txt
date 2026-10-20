@@ -1,0 +1,4 @@
+# Reconvergencia - 2026-10-01 17:38
+Fallo: spine2
+Corridas (s): [0.02, 0.02, 0.03]
+Promedio: 0.02 s

@@ -1,0 +1,33 @@
+hostname {{ name }}
+!
+interface lo
+ ip ospf area 0.0.0.0
+!
+{% for l in links %}
+interface {{ l.iface }}
+ description to-{{ l.peer }}
+ ip address {{ l.ip }}/31
+ ip ospf area 0.0.0.0
+ ip ospf network point-to-point
+ ip ospf dead-interval minimal hello-multiplier {{ hello_multiplier }}
+!
+{% endfor %}
+router ospf
+ ospf router-id {{ loopback }}
+!
+router bgp {{ asn }}
+ bgp router-id {{ loopback }}
+ no bgp default ipv4-unicast
+ neighbor LEAFS peer-group
+ neighbor LEAFS remote-as {{ asn }}
+ neighbor LEAFS update-source lo
+ neighbor LEAFS timers 3 9
+{% for n in neighbors %}
+ neighbor {{ n.ip }} peer-group LEAFS
+{% endfor %}
+ !
+ address-family l2vpn evpn
+  neighbor LEAFS activate
+  neighbor LEAFS route-reflector-client
+ exit-address-family
+!

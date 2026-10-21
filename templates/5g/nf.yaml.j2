@@ -1,0 +1,38 @@
+{% set sbi = {"nrf": "127.0.0.10", "scp": "127.0.0.200", "ausf": "127.0.0.11", "udm": "127.0.0.12",
+              "pcf": "127.0.0.13", "nssf": "127.0.0.14", "bsf": "127.0.0.15", "udr": "127.0.0.20"} %}
+# Open5GS {{ nf|upper }} (todo-en-uno, SBI en loopback) - generado por deploy.py desde topology.yaml
+{% if nf in ("udr", "pcf") %}
+db_uri: mongodb://{{ c5g.db.mongo }}/open5gs
+{% endif %}
+logger:
+  file:
+    path: /opt/open5gs/var/log/open5gs/{{ nf }}.log
+global:
+  max:
+    ue: 64
+{{ nf }}:
+{% if nf == "nrf" %}
+  serving:
+    - plmn_id:
+        mcc: {{ c5g.plmn.mcc }}
+        mnc: {{ c5g.plmn.mnc }}
+{% endif %}
+  sbi:
+    server:
+      - address: {{ sbi[nf] }}
+        port: 7777
+{% if nf == "scp" %}
+    client:
+      nrf:
+        - uri: http://{{ sbi.nrf }}:7777
+{% elif nf != "nrf" %}
+    client:
+      scp:
+        - uri: http://{{ sbi.scp }}:7777
+{% endif %}
+{% if nf == "nssf" %}
+      nsi:
+        - uri: http://{{ sbi.nrf }}:7777
+          s_nssai:
+            sst: 1
+{% endif %}

@@ -1,0 +1,5 @@
+# Servidor industrial {{ name }} en la red de servicios OT
+ip addr replace {{ ip }}/24 dev eth0
+ip route replace default via {{ nfv.vip_inside }}
+pkill -f /etc/gsm/srv.py 2>/dev/null; sleep 0.3
+nohup python3 /etc/gsm/srv.py </dev/null >/dev/null 2>&1 &

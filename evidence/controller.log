@@ -68,3 +68,2938 @@ You can also look at the Netmiko session_log or debug log for more information.
 2026-10-21 17:25:57 [ot-produccion] leaf2<->leaf4 via spine2 (RTT 0.41 ms) segs [fc00:0:2::e,fc00:0:14::d4]
 2026-10-21 17:26:12 [ot-produccion] spine2 proteccion local retiro la politica: recalculando
 2026-10-21 17:26:15 [ot-produccion] leaf2<->leaf4 via spine1 (RTT 0.47 ms) segs [fc00:0:1::e,fc00:0:14::d4]
+2026-10-21 17:27:34 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:27:42 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:27:50 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:27:58 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:28:07 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:28:15 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:28:23 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:28:31 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:28:39 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:28:47 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:28:56 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:29:04 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:29:12 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:29:20 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:29:29 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:29:37 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:29:45 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:29:53 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:30:01 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:30:09 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:30:17 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:30:25 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:30:33 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:30:41 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:30:49 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:30:58 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:31:06 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:31:14 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:31:23 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:31:31 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:31:39 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:31:47 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:31:55 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:32:04 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:32:12 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:32:20 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:32:28 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:32:37 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:32:45 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:32:53 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:33:01 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:33:10 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:33:18 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:33:26 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:33:35 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:33:43 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:33:51 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:34:00 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:34:08 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:34:16 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:34:24 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:34:33 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:34:41 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:34:49 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:34:57 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:35:06 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:35:14 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:35:22 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:35:30 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:35:38 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:35:47 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:35:55 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:36:03 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:36:12 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:36:20 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:36:28 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:36:37 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:36:45 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:36:53 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:37:01 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:37:09 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:37:18 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:37:26 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:37:34 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:37:42 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:37:51 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:37:59 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:38:07 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:38:15 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:38:24 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:38:32 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:38:40 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:38:48 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:38:57 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:39:05 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:39:13 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:39:22 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:39:30 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:39:38 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:39:47 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:39:55 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:40:04 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:40:12 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:40:21 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:40:29 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:40:37 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:40:45 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:40:53 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:41:02 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:41:10 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:41:18 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:41:26 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:41:34 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:41:42 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:41:51 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:41:59 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:42:07 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:42:15 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:42:23 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:42:32 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:42:40 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:42:48 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:42:56 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:43:04 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:43:12 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:43:20 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:43:28 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:43:36 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:43:44 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:43:52 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:44:01 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:44:09 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:44:17 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:44:25 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:44:33 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:44:41 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:44:49 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:44:57 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:45:05 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:45:13 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:45:21 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:45:29 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:45:38 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:45:46 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:45:54 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:46:02 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:46:10 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:46:18 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:46:26 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:46:34 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:46:43 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:46:51 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:46:59 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:47:07 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:47:15 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:47:23 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:47:31 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:47:39 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:47:47 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:47:55 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:48:03 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:48:12 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:48:20 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:48:28 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:48:36 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:48:44 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:48:52 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:49:00 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:49:08 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:49:16 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:49:25 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:49:33 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:49:41 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:49:49 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:49:57 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:50:05 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:50:13 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:50:21 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:50:29 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:50:37 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:50:46 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:50:54 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:51:02 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:51:10 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:51:18 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:51:26 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:51:34 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:51:43 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:51:51 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:51:59 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:52:07 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:52:15 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:52:23 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:52:31 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:52:40 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:52:48 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:52:56 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:53:04 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:53:12 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:53:20 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:53:29 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:53:37 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:53:45 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:53:53 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:54:01 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:54:09 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:54:17 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:54:25 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:54:33 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:54:42 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:54:50 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:54:58 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:55:06 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:55:14 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:55:22 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:55:30 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:55:38 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:55:47 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:55:55 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:56:03 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:56:11 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:56:19 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:56:27 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:56:35 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:56:43 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:56:51 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:56:59 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:57:07 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:57:15 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:57:24 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:57:32 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:57:40 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:57:48 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:57:56 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:58:04 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:58:12 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:58:20 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:58:29 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:58:37 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:58:45 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:58:53 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:59:01 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:59:09 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:59:17 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:59:25 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:59:33 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:59:41 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:59:49 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 17:59:57 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:00:05 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:00:13 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:00:22 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:00:30 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:00:38 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:00:46 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:00:55 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:01:03 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:01:11 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:01:19 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:01:27 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:01:36 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:01:44 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:01:52 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:02:00 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:02:08 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:02:16 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:02:24 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:02:33 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:02:41 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:02:49 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:02:57 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:03:05 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:03:13 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:03:21 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:03:29 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:03:37 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:03:45 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:03:54 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:04:02 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:04:10 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:04:18 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:04:26 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:04:34 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:04:42 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:04:50 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:04:58 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:05:07 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:05:15 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:05:23 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:05:31 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:05:39 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:05:47 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:05:55 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:06:03 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:06:12 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:06:20 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:06:28 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:06:36 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:06:44 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:06:52 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:07:00 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:07:09 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:07:17 [ot-produccion] error en el monitor: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: linux 192.168.122.22:22
+
+
+2026-10-21 18:07:24 [ot-produccion] spine1 proteccion local retiro la politica: recalculando
+2026-10-21 18:07:33 [ot-produccion] ninguna ruta cumple la intencion {'spine1': None, 'spine2': None}; trafico vuelve a OSPF ECMP
+2026-10-21 18:07:46 [ot-produccion] leaf2<->leaf4 via spine1 (RTT 0.53 ms) segs [fc00:0:1::e,fc00:0:14::d4]
+2026-10-21 18:08:23 controlador escuchando en :8181 (0 intenciones)
+2026-10-21 19:35:24 controlador escuchando en :8181 (0 intenciones)

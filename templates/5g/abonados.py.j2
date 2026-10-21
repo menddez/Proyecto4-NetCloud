@@ -1,0 +1,37 @@
+"""Alta de abonados 5G en la base de datos de Open5GS (UDR) - generado por deploy.py desde topology.yaml.
+Cada abonado recibe la QoS (5QI, ARP, AMBR) de su DNN."""
+import json
+
+from bson.int64 import Int64
+from pymongo import MongoClient
+
+ABONADOS = json.loads('''{{ abonados|tojson }}''')
+DNN = json.loads('''{{ c5g.dnn|tojson }}''')
+K, OPC = "{{ c5g.k }}", "{{ c5g.opc }}"
+
+
+def documento(a):
+    d = DNN[a["dnn"]]
+    ambr = {"downlink": {"value": d["ambr_mbps"], "unit": 2}, "uplink": {"value": d["ambr_mbps"], "unit": 2}}
+    return {
+        "imsi": a["imsi"], "msisdn": [], "imeisv": [], "mme_host": [], "mme_realm": [], "purge_flag": [],
+        "security": {"k": K, "op": None, "opc": OPC, "amf": "8000", "sqn": Int64(97)},
+        "ambr": ambr,
+        "slice": [{"sst": 1, "default_indicator": True, "session": [{
+            "name": a["dnn"], "type": 1,
+            "qos": {"index": d["qi"], "arp": {"priority_level": d["arp"],
+                                              "pre_emption_capability": d["preempcion"],
+                                              "pre_emption_vulnerability": d["vulnerable"]}},
+            "ambr": ambr, "pcc_rule": []}]}],
+        "access_restriction_data": 32, "subscriber_status": 0, "network_access_mode": 0,
+        "subscribed_rau_tau_timer": 12, "__v": 0,
+    }
+
+
+db = MongoClient("mongodb://{{ c5g.db.mongo }}/", serverSelectionTimeoutMS=30000).open5gs
+for a in ABONADOS:
+    db.subscribers.replace_one({"imsi": a["imsi"]}, documento(a), upsert=True)
+    d = DNN[a["dnn"]]
+    print(f"abonado {a['imsi']} ({a['nombre']}): DNN {a['dnn']}, 5QI {d['qi']}, ARP {d['arp']}, "
+          f"AMBR {d['ambr_mbps']} Mbit/s")
+print(f"{db.subscribers.count_documents({})} abonados en la base")

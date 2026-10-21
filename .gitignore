@@ -3,3 +3,5 @@ build/
 __pycache__/
 *.pyc
 automation/controller_state.json
+automation/nfv_estado.json
+automation/gns3_ids.json

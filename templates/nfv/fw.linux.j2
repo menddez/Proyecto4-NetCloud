@@ -1,0 +1,19 @@
+# Firewall virtual {{ name }} ({{ "ACTIVO" if activo else "RESPALDO" }}): eth0 hacia N6, eth1 hacia servicios OT
+ip addr replace {{ outside }}/24 dev eth0
+ip addr replace {{ inside }}/24 dev eth1
+sysctl -qw net.ipv4.ip_forward=1
+{% for dnn_name, d in c5g.dnn.items() %}
+ip route replace {{ d.subnet }} via {{ c5g.n6 }}
+{% endfor %}
+nft -f /etc/gsm/fw.nft
+{% if activo %}
+# Instancia activa: toma las IP virtuales (puertas de enlace) y lo anuncia con ARP gratuito
+ip addr replace {{ nfv.vip_outside }}/24 dev eth0
+ip addr replace {{ nfv.vip_inside }}/24 dev eth1
+nohup arping -U -c 2 -I eth0 {{ nfv.vip_outside }} >/dev/null 2>&1 &
+nohup arping -U -c 2 -I eth1 {{ nfv.vip_inside }} >/dev/null 2>&1 &
+{% else %}
+# Instancia de respaldo caliente: reglas cargadas, sin IP virtuales
+ip addr del {{ nfv.vip_outside }}/24 dev eth0 2>/dev/null || true
+ip addr del {{ nfv.vip_inside }}/24 dev eth1 2>/dev/null || true
+{% endif %}

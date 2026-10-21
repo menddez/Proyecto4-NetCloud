@@ -1,0 +1,21 @@
+# Open5GS UPF - generado por deploy.py desde topology.yaml
+logger:
+  file:
+    path: /opt/open5gs/var/log/open5gs/upf.log
+global:
+  max:
+    ue: 64
+upf:
+  pfcp:
+    server:
+      - address: 127.0.0.7
+  gtpu:
+    server:
+      - address: {{ c5g.n2n3 }}
+  session:
+{% for dnn_name, d in c5g.dnn.items() %}
+    - subnet: {{ d.subnet }}
+      gateway: {{ d.gw }}
+      dnn: {{ dnn_name }}
+      dev: {{ d.tun }}
+{% endfor %}

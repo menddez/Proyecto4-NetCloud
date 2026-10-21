@@ -1,0 +1,19 @@
+#!/usr/sbin/nft -f
+# Firewall virtual (VNF) de la cadena N6 -> servicios OT - generado por deploy.py desde topology.yaml
+# Politica por defecto: descartar. Solo la telemetria IoT llega al servicio publicado por el balanceador.
+flush ruleset
+table inet sfc {
+  counter iot_a_servicios {}
+  counter iot_icmp {}
+  counter admin_bloqueado {}
+  counter otros_bloqueados {}
+
+  chain forward {
+    type filter hook forward priority 0; policy drop;
+    ct state established,related accept
+    ip saddr {{ c5g.dnn.iot.subnet }} ip daddr {{ nfv.vip_lb }} tcp dport 80 counter name "iot_a_servicios" accept
+    ip saddr {{ c5g.dnn.iot.subnet }} ip daddr {{ nfv.red_servicios }} icmp type echo-request counter name "iot_icmp" accept
+    ip saddr {{ c5g.dnn.admin.subnet }} ip daddr {{ nfv.red_servicios }} counter name "admin_bloqueado" log prefix "FW-DROP admin->OT " drop
+    counter name "otros_bloqueados" drop
+  }
+}

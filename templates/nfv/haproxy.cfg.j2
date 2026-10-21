@@ -1,0 +1,28 @@
+# Balanceador de carga virtual (VNF) - generado por deploy.py desde topology.yaml
+global
+  daemon
+  maxconn 2000
+  stats socket /run/haproxy.sock mode 600 level admin
+
+defaults
+  mode http
+  timeout connect 2s
+  timeout client 10s
+  timeout server 10s
+
+frontend servicios_ot
+  bind {{ nfv.vip_lb }}:80
+  default_backend servidores_industriales
+
+backend servidores_industriales
+  balance roundrobin
+  option httpchk GET /salud
+  default-server check inter 1s fall 2 rise 2
+{% for n in ["srv1", "srv2"] %}
+  server {{ n }} {{ servidores[n] }}:8080
+{% endfor %}
+
+listen estadisticas
+  bind {{ mgmt }}:8404
+  stats enable
+  stats uri /

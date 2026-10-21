@@ -1,0 +1,15 @@
+# Nucleo 5G privado (Open5GS 2.7.2 todo-en-uno) administrable por SSH/Netmiko
+FROM gradiant/open5gs:2.7.2
+USER root
+# Debian 11 (base de la imagen) salio de deb.debian.org: se usa el snapshot con el que se construyo la imagen
+RUN sed -i 's|^deb http://deb.debian.org.*||; s|^# deb http://snapshot|deb http://snapshot|' /etc/apt/sources.list \
+ && apt-get -o Acquire::Check-Valid-Until=false update \
+ && apt-get install -y --no-install-recommends openssh-server iputils-ping iperf3 tcpdump python3-pip procps curl \
+ && pip3 install --no-cache-dir pymongo==4.6.3 \
+ && rm -rf /var/lib/apt/lists/* \
+ && echo 'root:gsm12345' | chpasswd \
+ && printf 'PermitRootLogin yes\nPasswordAuthentication yes\n' > /etc/ssh/sshd_config.d/lab.conf
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+ENTRYPOINT []
+CMD ["/start.sh"]

@@ -1,0 +1,18 @@
+<!doctype html><meta charset='utf-8'><title>Estado de las VNFs</title><body style='font-family:sans-serif;margin:24px'><h2>Estado de las VNFs - 2026-10-21 19:36:27</h2><p>Cadena de servicios (SFC): UE -> UPF -> vFW activo -> vLB -> servidores industriales.</p><pre class='mermaid'>flowchart LR
+  upf["UPF (core5g)<br/>N6 10.40.0.10"]
+  fw1["vFW fw1<br/>ACTIVO"]
+  fw2["vFW fw2<br/>RESPALDO"]
+  lb["vLB HAProxy<br/>VIP 10.50.0.100"]
+  srv1["srv1<br/>UP"]
+  srv2["srv2<br/>UP"]
+  upf ==>|N6 VIP 10.40.0.1| fw1
+  fw1 ==>|VIP 10.50.0.1| lb
+  lb --> srv1
+  lb --> srv2
+  upf -.->|respaldo| fw2
+  style upf fill:#2e7d32,color:#fff
+  style fw1 fill:#2e7d32,color:#fff
+  style fw2 fill:#1565c0,color:#fff
+  style lb fill:#2e7d32,color:#fff
+  style srv1 fill:#2e7d32,color:#fff
+  style srv2 fill:#2e7d32,color:#fff</pre><table border='1' cellpadding='6' style='border-collapse:collapse'><tr><th>VNF</th><th>Rol / estado</th><th>Gestion</th></tr><tr><td>fw1 (nftables)</td><td>ACTIVO</td><td>192.168.122.51</td></tr><tr><td>fw2 (nftables)</td><td>RESPALDO</td><td>192.168.122.52</td></tr><tr><td>lb (HAProxy)</td><td>ACTIVO</td><td>192.168.122.53</td></tr><tr><td>srv1 (servidor)</td><td>UP</td><td>192.168.122.54</td></tr><tr><td>srv2 (servidor)</td><td>UP</td><td>192.168.122.55</td></tr></table><script src='https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js'></script><script>mermaid.initialize({startOnLoad: true});</script></body>

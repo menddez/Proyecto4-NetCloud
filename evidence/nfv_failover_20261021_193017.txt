@@ -1,0 +1,43 @@
+# Prueba de falla NFV (firewall virtual) - 2026-10-21 19:30:17
+
+===== Estado inicial: fw1 ACTIVO, fw2 RESPALDO =====
+{
+  "activo": "fw1",
+  "respaldo": "fw2",
+  "instancias": {
+    "fw1": "ACTIVO",
+    "fw2": "RESPALDO"
+  },
+  "actualizado": "19:30:12"
+}
+===== FALLA INTENCIONAL: docker kill del contenedor de fw1 (19:30:20.702) =====
+
+===== Eventos del orquestador =====
+2026-10-21 19:30:21.173 sondeo fallido de fw1
+2026-10-21 19:30:21.907 CONMUTACION: fw2 es ACTIVO (VIP 10.40.0.1 / 10.50.0.1) 0.73 s despues del primer sondeo fallido de fw1
+2026-10-21 19:30:31.053 RE-INSTANCIA: fw1 recreado por la API de GNS3 y configurado como RESPALDO en 9.1 s
+
+===== Robot (uesimtun0): ping cada 50 ms a srv1 durante la falla =====
+600 packets transmitted, 579 received, 3.5% packet loss, time 30865ms
+rtt min/avg/max/mdev = 1.225/2.492/20.837/1.135 ms
+
+===== Trafico despues de la conmutacion =====
+{"servidor": "srv1", "ruta": "/telemetria", "cliente": "10.50.0.4", "hora": "19:30:49"}
+{"servidor": "srv2", "ruta": "/telemetria", "cliente": "10.50.0.4", "hora": "19:30:49"}
+		packets 2 bytes 120
+
+===== RESULTADO =====
+Conmutacion al respaldo: 0.73 s despues del primer sondeo fallido (objetivo < 5 s)
+Interrupcion vista por el robot: 21 de 600 pings perdidos = 1.05 s
+fw1 fue re-instanciado por la API de GNS3 y quedo como RESPALDO; fw2 es el nuevo ACTIVO
+
+|---|---|---|
+| fw1 (nftables) | RESPALDO | 192.168.122.51 |
+| fw2 (nftables) | ACTIVO | 192.168.122.52 |
+| lb (HAProxy) | ACTIVO | 192.168.122.53 |
+| srv1 (servidor) | UP | 192.168.122.54 |
+| srv2 (servidor) | UP | 192.168.122.55 |
+
+Diagrama guardado en /home/gns3/netcloud-secure/evidence/nfv_estado_20261021_193049.md
+
+Evidencia: /home/gns3/netcloud-secure/evidence/nfv_failover_20261021_193017.txt

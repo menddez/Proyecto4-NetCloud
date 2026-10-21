@@ -1,0 +1,8 @@
+# ONT {{ name }} - {{ ont.servicio }} (T-CONT tipo {{ ont.tcont }}, asegurado {{ ont.asegurado }} Mbit/s, maximo {{ ont.maximo }})
+ip addr replace {{ ont.ip }}/24 dev eth0
+# T-CONT: clase HTB cuya tasa fija la OLT en cada ciclo de DBA (arranca con 2 Mbit/s)
+tc qdisc del dev eth0 root 2>/dev/null
+tc qdisc add dev eth0 root handle 1: htb default 10
+tc class add dev eth0 parent 1: classid 1:10 htb rate 2mbit ceil 2mbit
+pkill -f /etc/gsm/onu_agent.py 2>/dev/null; sleep 0.3
+nohup python3 /etc/gsm/onu_agent.py </dev/null >/var/log/onu.log 2>&1 &

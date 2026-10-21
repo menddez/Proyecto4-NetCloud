@@ -1,0 +1,45 @@
+"""Agente ONU de {{ name }} ({{ ont.servicio }}, T-CONT tipo {{ ont.tcont }}).
+Reporta a la OLT su tasa de subida y la ocupacion de su cola (DBRu) y aplica el grant recibido
+moldeando su T-CONT (clase HTB 1:10 en eth0, hacia el splitter)."""
+import json
+import re
+import socket
+import subprocess
+import time
+
+OLT = ("{{ f5g.olt.pon }}", 7000)
+NOMBRE = "{{ name }}"
+CICLO = {{ f5g.ciclo_ms }} / 1000
+
+
+def estado():
+    out = subprocess.run(["tc", "-s", "class", "show", "dev", "eth0", "classid", "1:10"],
+                         capture_output=True, text=True).stdout
+    enviados = int(re.search(r"Sent (\d+) bytes", out).group(1))
+    cola = int(re.search(r"backlog (\d+)b", out).group(1))
+    return enviados, cola
+
+
+def aplicar(mbps):
+    subprocess.run(["tc", "class", "change", "dev", "eth0", "parent", "1:", "classid", "1:10",
+                    "htb", "rate", f"{mbps}mbit", "ceil", f"{mbps}mbit"], check=False)
+
+
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock.bind(("0.0.0.0", 7001))
+sock.settimeout(CICLO)
+previo, t_previo = estado()[0], time.time()
+grant = None
+while True:
+    try:
+        g = json.loads(sock.recv(2048))["grant_mbps"]
+        if grant is None or abs(g - grant) > 0.02 * max(grant, 1):
+            aplicar(g)
+            grant = g
+    except socket.timeout:
+        pass
+    enviados, cola = estado()
+    ahora = time.time()
+    tasa = (enviados - previo) * 8 / (ahora - t_previo) / 1e6
+    previo, t_previo = enviados, ahora
+    sock.sendto(json.dumps({"ont": NOMBRE, "rate": round(tasa, 2), "backlog": cola}).encode(), OLT)

@@ -1,0 +1,46 @@
+# UERANSIM UE {{ a.nombre }} (DNN {{ a.dnn }}) - generado por deploy.py desde topology.yaml
+supi: 'imsi-{{ a.imsi }}'
+mcc: '{{ c5g.plmn.mcc }}'
+mnc: '{{ c5g.plmn.mnc }}'
+protectionScheme: 0
+homeNetworkPublicKey: '5a8d38864820197c3394b92613b20b91633cbd897119273bf8e4a6f4eec0a650'
+homeNetworkPublicKeyId: 1
+routingIndicator: '0000'
+key: '{{ c5g.k }}'
+op: '{{ c5g.opc }}'
+opType: 'OPC'
+amf: '8000'
+imei: '35693803564{{ a.imsi[-4:] }}'
+imeiSv: '43708161258{{ a.imsi[-5:] }}'
+gnbSearchList:
+  - {{ c5g.gnb.radio }}
+uacAic:
+  mps: false
+  mcs: false
+uacAcc:
+  normalClass: 0
+  class11: false
+  class12: false
+  class13: false
+  class14: false
+  class15: false
+sessions:
+  - type: 'IPv4'
+    apn: '{{ a.dnn }}'
+    slice:
+      sst: 1
+configured-nssai:
+  - sst: 1
+default-nssai:
+  - sst: 1
+integrity:
+  IA1: true
+  IA2: true
+  IA3: true
+ciphering:
+  EA1: true
+  EA2: true
+  EA3: true
+integrityMaxRate:
+  uplink: 'full'
+  downlink: 'full'

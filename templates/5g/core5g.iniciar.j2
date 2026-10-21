@@ -1,0 +1,12 @@
+# Arranca las funciones del nucleo 5G en orden (NRF/SCP primero) y da de alta a los abonados
+pkill -f /opt/open5gs/bin/open5gs- 2>/dev/null; sleep 1
+for nf in {{ ["nrf", "scp", "ausf", "udm", "udr", "pcf", "nssf", "bsf", "amf", "smf", "upf"]|join(" ") }}; do
+  : > /opt/open5gs/var/log/open5gs/$nf.log
+  nohup /opt/open5gs/bin/open5gs-${nf}d -c /etc/gsm5g/$nf.yaml </dev/null >/dev/null 2>&1 &
+  sleep 0.3
+done
+python3 /etc/gsm5g/abonados.py
+for i in $(seq 30); do grep -q "ngap_server" /opt/open5gs/var/log/open5gs/amf.log && break; sleep 1; done
+echo "funciones del nucleo activas: $(pgrep -c -f /opt/open5gs/bin/open5gs-)/11"
+grep -h "ngap_server\|gtpu_server\|pfcp_server" /opt/open5gs/var/log/open5gs/*.log | tail -4
+grep -h -i -E "\[(error|fatal)\]" /opt/open5gs/var/log/open5gs/*.log | tail -5

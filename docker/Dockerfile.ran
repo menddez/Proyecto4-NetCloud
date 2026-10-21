@@ -1,0 +1,12 @@
+# Radio 5G simulada: gNodeB y UEs (UERANSIM 3.2.6) administrables por SSH/Netmiko
+FROM gradiant/ueransim:3.2.6
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends openssh-server iputils-ping iperf3 tcpdump \
+      curl python3 procps \
+ && rm -rf /var/lib/apt/lists/* \
+ && echo 'root:gsm12345' | chpasswd \
+ && printf 'PermitRootLogin yes\nPasswordAuthentication yes\n' > /etc/ssh/sshd_config.d/lab.conf
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+ENTRYPOINT []
+CMD ["/start.sh"]

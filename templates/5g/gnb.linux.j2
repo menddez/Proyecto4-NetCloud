@@ -1,0 +1,4 @@
+# gNodeB: N2/N3 hacia el nucleo por el fabric (eth0, VNI 10030) e interfaz de radio simulada (eth1)
+mkdir -p /etc/gsm5g
+ip addr replace {{ c5g.gnb.n2n3 }}/24 dev eth0
+ip addr replace {{ c5g.gnb.radio }}/24 dev eth1

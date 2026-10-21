@@ -1,0 +1,20 @@
+# Validacion de throughput F5G con DBA - 2026-10-21 19:33:28
+PON simulado de 100 Mbit/s de subida, ciclo DBA 250 ms, TCP iperf3 ONT -> OLT (60 s)
+
+T-CONT configurados:
+  ont1: Oficinas                 tipo 4  asegurado   0  maximo 100  peso 1
+  ont2: ERP-Corporativo          tipo 2  asegurado  30  maximo 100  peso 1
+  ont3: Camaras-Videoanalitica   tipo 3  asegurado  20  maximo  60  peso 2
+
+Promedio por fase (se descartan los 5 s de transicion). Medido = iperf3; grant = DBA (Mbit/s):
+
+fase             ont1 medido  ont1 grant   ont2 medido  ont2 grant   ont3 medido  ont3 grant    total
+ont1 sola               77.3        96.0           0.0         2.0           0.0         2.0     77.3
+ont1 + ont2             32.9        35.0          57.4        63.0           0.0         2.0     90.3
+las tres                13.4        14.0          39.7        42.0          40.8        44.0     94.0
+ont2 + ont3              0.0         2.0          43.0        46.0          47.0        52.0     90.0
+
+Lectura: con una sola ONT el DBA le da casi todo el PON; al entrar mas ONT se respetan los
+asegurados (ERP 30, camaras 20) y el excedente se reparte por peso; el total nunca supera la capacidad.
+
+Archivos: f5g_dba_20261021_193328.csv (ciclos del DBA) y f5g_dba_20261021_193328.svg (grafica)

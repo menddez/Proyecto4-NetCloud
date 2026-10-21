@@ -1,0 +1,10 @@
+2026-10-21 19:26:55.868 orquestador iniciado: activo=fw1, respaldo=fw2, sondeo 0.3 s x 2 fallos
+2026-10-21 19:27:23.662 sondeo fallido de fw1
+2026-10-21 19:27:24.403 CONMUTACION: fw2 es ACTIVO (VIP 10.40.0.1 / 10.50.0.1) 0.74 s despues del primer sondeo fallido de fw1
+2026-10-21 19:27:25.015 ERROR re-instanciando fw1: HTTP Error 409: Conflict
+2026-10-21 19:29:14.999 orquestador iniciado: activo=fw1, respaldo=fw2, sondeo 0.3 s x 2 fallos
+2026-10-21 19:30:12.136 orquestador iniciado: activo=fw1, respaldo=fw2, sondeo 0.3 s x 2 fallos
+2026-10-21 19:30:21.173 sondeo fallido de fw1
+2026-10-21 19:30:21.907 CONMUTACION: fw2 es ACTIVO (VIP 10.40.0.1 / 10.50.0.1) 0.73 s despues del primer sondeo fallido de fw1
+2026-10-21 19:30:31.053 RE-INSTANCIA: fw1 recreado por la API de GNS3 y configurado como RESPALDO en 9.1 s
+2026-10-21 19:35:27.796 orquestador iniciado: activo=fw1, respaldo=fw2, sondeo 0.3 s x 2 fallos

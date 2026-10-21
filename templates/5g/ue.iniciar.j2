@@ -1,0 +1,12 @@
+# Arranca un UE por abonado y espera su registro y sesion PDU
+pkill nr-ue 2>/dev/null; sleep 0.5; rm -rf /tmp/UERANSIM.proc-table
+{% for a in abonados %}
+: > /var/log/ue-{{ a.nombre }}.log
+nohup nr-ue -c /etc/gsm5g/ue-{{ a.nombre }}.yaml > /var/log/ue-{{ a.nombre }}.log 2>&1 </dev/null &
+sleep 1   # nr-ue simultaneos chocan al crear /tmp/UERANSIM.proc-table
+{% endfor %}
+for i in $(seq 40); do
+  [ "$(grep -l 'PDU Session establishment is successful' /var/log/ue-*.log 2>/dev/null | wc -l)" -ge {{ abonados|length }} ] && break
+  sleep 1
+done
+grep -H "TUN interface" /var/log/ue-*.log | sed 's#/var/log/##'

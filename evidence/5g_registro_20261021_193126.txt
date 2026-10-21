@@ -1,0 +1,100 @@
+# Registro de abonados 5G - 2026-10-21 19:31:26
+Nucleo Open5GS 2.7.2 (core5g, DC1) <- N2/N3 por EVPN VNI 10030 -> gNodeB UERANSIM (Planta)
+
+===== Abonados en la UDR (MongoDB) con la QoS de su DNN =====
+IMSI 001010000000001  DNN iot    5QI 80  ARP 1  AMBR 100 Mbit/s
+IMSI 001010000000002  DNN iot    5QI 80  ARP 1  AMBR 100 Mbit/s
+IMSI 001010000000003  DNN iot    5QI 80  ARP 1  AMBR 100 Mbit/s
+IMSI 001010000000004  DNN admin  5QI 9   ARP 8  AMBR 20 Mbit/s
+
+===== gNodeB: establecimiento de N2 (NG Setup con el AMF) =====
+[2026-10-21 19:24:52.035] [sctp] [debug] SCTP association setup ascId[3]
+[2026-10-21 19:24:52.035] [ngap] [debug] Sending NG Setup Request
+[2026-10-21 19:24:52.064] [ngap] [debug] NG Setup Response received
+[2026-10-21 19:24:52.064] [ngap] [info] NG Setup procedure is successful
+
+===== AMF: registro de cada UE =====
+10/21 19:24:52.062: [amf] INFO: [Added] Number of gNBs is now 1 (../src/amf/context.c:1238)
+10/21 19:24:57.284: [amf] INFO: InitialUEMessage (../src/amf/ngap-handler.c:435)
+10/21 19:24:57.285: [amf] INFO: [Added] Number of AMF-UEs is now 1 (../src/amf/context.c:1638)
+10/21 19:24:57.285: [gmm] INFO: Registration request (../src/amf/gmm-sm.c:1220)
+10/21 19:24:57.522: [gmm] INFO: [imsi-001010000000001] Registration complete (../src/amf/gmm-sm.c:2288)
+10/21 19:24:57.522: [amf] INFO: [imsi-001010000000001] Configuration update command (../src/amf/nas-path.c:607)
+10/21 19:24:57.522: [gmm] INFO: UE SUPI[imsi-001010000000001] DNN[iot] S_NSSAI[SST:1 SD:0xffffff] smContextRef[NULL] smContextResourceURI[NULL] (../src/amf/gmm-handler.c:1368)
+10/21 19:24:58.286: [amf] INFO: InitialUEMessage (../src/amf/ngap-handler.c:435)
+10/21 19:24:58.286: [amf] INFO: [Added] Number of AMF-UEs is now 2 (../src/amf/context.c:1638)
+10/21 19:24:58.286: [gmm] INFO: Registration request (../src/amf/gmm-sm.c:1220)
+10/21 19:24:58.522: [gmm] INFO: [imsi-001010000000002] Registration complete (../src/amf/gmm-sm.c:2288)
+10/21 19:24:58.522: [amf] INFO: [imsi-001010000000002] Configuration update command (../src/amf/nas-path.c:607)
+10/21 19:24:58.522: [gmm] INFO: UE SUPI[imsi-001010000000002] DNN[iot] S_NSSAI[SST:1 SD:0xffffff] smContextRef[NULL] smContextResourceURI[NULL] (../src/amf/gmm-handler.c:1368)
+10/21 19:24:59.289: [amf] INFO: InitialUEMessage (../src/amf/ngap-handler.c:435)
+10/21 19:24:59.290: [amf] INFO: [Added] Number of AMF-UEs is now 3 (../src/amf/context.c:1638)
+10/21 19:24:59.290: [gmm] INFO: Registration request (../src/amf/gmm-sm.c:1220)
+10/21 19:24:59.522: [gmm] INFO: [imsi-001010000000003] Registration complete (../src/amf/gmm-sm.c:2288)
+10/21 19:24:59.522: [amf] INFO: [imsi-001010000000003] Configuration update command (../src/amf/nas-path.c:607)
+10/21 19:24:59.522: [gmm] INFO: UE SUPI[imsi-001010000000003] DNN[iot] S_NSSAI[SST:1 SD:0xffffff] smContextRef[NULL] smContextResourceURI[NULL] (../src/amf/gmm-handler.c:1368)
+10/21 19:25:00.290: [amf] INFO: InitialUEMessage (../src/amf/ngap-handler.c:435)
+10/21 19:25:00.290: [amf] INFO: [Added] Number of AMF-UEs is now 4 (../src/amf/context.c:1638)
+10/21 19:25:00.290: [gmm] INFO: Registration request (../src/amf/gmm-sm.c:1220)
+10/21 19:25:00.531: [gmm] INFO: [imsi-001010000000004] Registration complete (../src/amf/gmm-sm.c:2288)
+10/21 19:25:00.531: [amf] INFO: [imsi-001010000000004] Configuration update command (../src/amf/nas-path.c:607)
+10/21 19:25:00.531: [gmm] INFO: UE SUPI[imsi-001010000000004] DNN[admin] S_NSSAI[SST:1 SD:0xffffff] smContextRef[NULL] smContextResourceURI[NULL] (../src/amf/gmm-handler.c:1368)
+
+===== SMF: sesiones PDU (IMSI, DNN e IP asignada) =====
+10/21 19:24:57.523: [smf] INFO: [Added] Number of SMF-UEs is now 1 (../src/smf/context.c:1029)
+10/21 19:24:57.523: [smf] INFO: [Added] Number of SMF-Sessions is now 1 (../src/smf/context.c:3113)
+10/21 19:24:57.534: [smf] INFO: UE SUPI[imsi-001010000000001] DNN[iot] IPv4[10.45.0.2] IPv6[] (../src/smf/npcf-handler.c:578)
+10/21 19:24:58.523: [smf] INFO: [Added] Number of SMF-UEs is now 2 (../src/smf/context.c:1029)
+10/21 19:24:58.523: [smf] INFO: [Added] Number of SMF-Sessions is now 2 (../src/smf/context.c:3113)
+10/21 19:24:58.532: [smf] INFO: UE SUPI[imsi-001010000000002] DNN[iot] IPv4[10.45.0.3] IPv6[] (../src/smf/npcf-handler.c:578)
+10/21 19:24:59.523: [smf] INFO: [Added] Number of SMF-UEs is now 3 (../src/smf/context.c:1029)
+10/21 19:24:59.523: [smf] INFO: [Added] Number of SMF-Sessions is now 3 (../src/smf/context.c:3113)
+10/21 19:24:59.531: [smf] INFO: UE SUPI[imsi-001010000000003] DNN[iot] IPv4[10.45.0.4] IPv6[] (../src/smf/npcf-handler.c:578)
+10/21 19:25:00.532: [smf] INFO: [Added] Number of SMF-UEs is now 4 (../src/smf/context.c:1029)
+10/21 19:25:00.532: [smf] INFO: [Added] Number of SMF-Sessions is now 4 (../src/smf/context.c:3113)
+10/21 19:25:00.538: [smf] INFO: UE SUPI[imsi-001010000000004] DNN[admin] IPv4[10.46.0.2] IPv6[] (../src/smf/npcf-handler.c:578)
+
+===== UPF: sesiones del plano de usuario =====
+10/21 19:24:51.221: [upf] INFO: PFCP associated [127.0.0.4]:8805 (../src/upf/pfcp-sm.c:184)
+10/21 19:24:57.534: [upf] INFO: [Added] Number of UPF-Sessions is now 1 (../src/upf/context.c:207)
+10/21 19:24:58.533: [upf] INFO: [Added] Number of UPF-Sessions is now 2 (../src/upf/context.c:207)
+10/21 19:24:59.531: [upf] INFO: [Added] Number of UPF-Sessions is now 3 (../src/upf/context.c:207)
+10/21 19:25:00.538: [upf] INFO: [Added] Number of UPF-Sessions is now 4 (../src/upf/context.c:207)
+
+===== UEs (UERANSIM): registro y sesion PDU =====
+--- ue-robot-ensamble
+[2026-10-21 19:24:58.313] [nas] [info] Initial Registration is successful
+[2026-10-21 19:24:58.536] [nas] [info] PDU Session establishment is successful PSI[1]
+[2026-10-21 19:24:58.548] [app] [info] Connection setup for PDU session[1] is successful, TUN interface[uesimtun1, 10.45.0.3] is up.
+--- ue-robot-soldadura
+[2026-10-21 19:24:57.321] [nas] [info] Initial Registration is successful
+[2026-10-21 19:24:57.538] [nas] [info] PDU Session establishment is successful PSI[1]
+[2026-10-21 19:24:57.551] [app] [info] Connection setup for PDU session[1] is successful, TUN interface[uesimtun0, 10.45.0.2] is up.
+--- ue-sensor-plc
+[2026-10-21 19:24:59.319] [nas] [info] Initial Registration is successful
+[2026-10-21 19:24:59.534] [nas] [info] PDU Session establishment is successful PSI[1]
+[2026-10-21 19:24:59.544] [app] [info] Connection setup for PDU session[1] is successful, TUN interface[uesimtun2, 10.45.0.4] is up.
+--- ue-tablet-admin
+[2026-10-21 19:25:00.325] [nas] [info] Initial Registration is successful
+[2026-10-21 19:25:00.542] [nas] [info] PDU Session establishment is successful PSI[1]
+[2026-10-21 19:25:00.551] [app] [info] Connection setup for PDU session[1] is successful, TUN interface[uesimtun3, 10.46.0.2] is up.
+
+===== nr-cli: estado de un UE =====
+cm-state: CM-CONNECTED
+rm-state: RM-REGISTERED
+mm-state: MM-REGISTERED/NORMAL-SERVICE
+5u-state: 5U1-UPDATED
+sim-inserted: true
+selected-plmn: 001/01
+current-cell: 1
+current-plmn: 001/01
+current-tac: 1
+last-tai: PLMN[001/01] TAC[1]
+stored-suci: no-identity
+stored-guti: 
+ plmn: 001/01
+ amf-region-id: 0x02
+ amf-set-id: 1
+ amf-pointer: 0
+ tmsi: 0xc000002a
+has-emergency: false

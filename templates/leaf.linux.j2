@@ -9,9 +9,11 @@ ip link set vxlan{{ v.vni }} master br{{ v.id }}
 ip link set br{{ v.id }} up
 ip link set vxlan{{ v.vni }} up
 {% endfor %}
-# Puerto de acceso hacia el host (VLAN {{ access_vlan }})
-ip link set {{ access_port }} master br{{ access_vlan }}
-ip link set {{ access_port }} up
+# Puertos de acceso (hosts y equipos de la Entrega 2)
+{% for port, vlan in access.items() %}
+ip link set {{ port }} master br{{ vlan }}
+ip link set {{ port }} up
+{% endfor %}
 {% include "srv6.linux.j2" %}
 
 # SID End.DX4: desencapsula y entrega localmente el IPv4 interno (VXLAN dirigido por el controlador)

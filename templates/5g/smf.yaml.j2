@@ -1,0 +1,38 @@
+# Open5GS SMF - generado por deploy.py desde topology.yaml
+logger:
+  file:
+    path: /opt/open5gs/var/log/open5gs/smf.log
+global:
+  max:
+    ue: 64
+smf:
+  sbi:
+    server:
+      - address: 127.0.0.4
+        port: 7777
+    client:
+      scp:
+        - uri: http://127.0.0.200:7777
+  pfcp:
+    server:
+      - address: 127.0.0.4
+    client:
+      upf:
+        - address: 127.0.0.7
+  gtpc:
+    server:
+      - address: 127.0.0.4
+  gtpu:
+    server:
+      - address: 127.0.0.4
+  session:
+{% for dnn_name, d in c5g.dnn.items() %}
+    - subnet: {{ d.subnet }}
+      gateway: {{ d.gw }}
+      dnn: {{ dnn_name }}
+{% endfor %}
+  dns:
+    - 8.8.8.8
+  mtu: 1400
+  ctf:
+    enabled: no

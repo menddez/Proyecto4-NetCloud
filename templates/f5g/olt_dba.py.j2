@@ -1,0 +1,83 @@
+"""OLT F5G: asignacion dinamica de ancho de banda de subida (DBA por reporte de estado, ITU-T G.984.3).
+
+Cada ciclo ({{ f5g.ciclo_ms }} ms) las ONT reportan su tasa y la ocupacion de su cola (DBRu); la OLT calcula
+el grant de cada T-CONT y lo envia. Reglas:
+  1. T-CONT tipo 1: su ancho de banda fijo siempre. Tipos 2 y 3: su asegurado si tienen trafico.
+  2. Piso de 2 Mbit/s para que una ONT inactiva pueda volver a pedir.
+  3. Las ONT sin cola reciben lo que usan + 20 %.
+  4. El excedente se reparte entre las ONT con cola, en proporcion a su peso, hasta su maximo.
+Capacidad del PON: {{ f5g.capacidad_mbps }} Mbit/s (simulacion escalada de GPON).
+Registro por ciclo en /var/log/dba.csv.
+"""
+import json
+import socket
+import time
+
+CAP = {{ f5g.capacidad_mbps }}
+CICLO = {{ f5g.ciclo_ms }} / 1000
+PISO = 2.0
+ONT = json.loads('''{{ f5g.ont|tojson }}''')
+
+
+def asignar(reportes, grants):
+    """Devuelve {ont: grant_mbps} a partir de los ultimos reportes {ont: {rate, backlog}}."""
+    alloc, hambrientas = {}, []
+    for o, cfg in ONT.items():
+        r = reportes.get(o, {"rate": 0.0, "backlog": 0})
+        demanda = r["rate"] + r["backlog"] * 8 / CICLO / 1e6
+        con_trafico = demanda > 0.5
+        base = cfg["asegurado"] if cfg["tcont"] == 1 or con_trafico else 0
+        alloc[o] = max(min(base, cfg["maximo"]), PISO)
+        if r["backlog"] > 0 or r["rate"] >= 0.85 * grants.get(o, PISO):
+            hambrientas.append(o)
+        else:
+            alloc[o] = max(alloc[o], min(cfg["maximo"], demanda * 1.2))
+    candidatas = hambrientas or list(ONT)
+    resto = CAP - sum(alloc.values())
+    while resto > 0.01 and candidatas:          # llenado por pesos, respetando el maximo de cada T-CONT
+        peso = sum(ONT[o]["peso"] for o in candidatas)
+        llenas = []
+        for o in candidatas:
+            parte = resto * ONT[o]["peso"] / peso
+            espacio = ONT[o]["maximo"] - alloc[o]
+            alloc[o] += min(parte, espacio)
+            if espacio <= parte:
+                llenas.append(o)
+        resto = CAP - sum(alloc.values())
+        candidatas = [o for o in candidatas if o not in llenas]
+        if not llenas:
+            break
+    return {o: round(g, 1) for o, g in alloc.items()}
+
+
+def main():
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sock.bind(("0.0.0.0", 7000))
+    sock.setblocking(False)
+    reportes, grants = {}, {o: max(c["asegurado"], PISO) for o, c in ONT.items()}
+    t0 = time.time()
+    with open("/var/log/dba.csv", "w") as csv:
+        csv.write("t," + ",".join(f"{o}_tasa,{o}_cola,{o}_grant" for o in ONT) + "\n")
+        while True:
+            inicio = time.time()
+            while True:                         # reportes DBRu recibidos en el ultimo ciclo
+                try:
+                    data, _ = sock.recvfrom(2048)
+                    r = json.loads(data)
+                    reportes[r["ont"]] = r
+                except BlockingIOError:
+                    break
+            grants = asignar(reportes, grants)
+            for o, g in grants.items():
+                sock.sendto(json.dumps({"grant_mbps": g}).encode(), (ONT[o]["ip"], 7001))
+            fila = [f"{time.time() - t0:.2f}"]
+            for o in ONT:
+                r = reportes.get(o, {"rate": 0, "backlog": 0})
+                fila += [str(r["rate"]), str(r["backlog"]), str(grants[o])]
+            csv.write(",".join(fila) + "\n")
+            csv.flush()
+            time.sleep(max(0.0, CICLO - (time.time() - inicio)))
+
+
+if __name__ == "__main__":
+    main()

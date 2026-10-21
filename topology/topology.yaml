@@ -1,4 +1,4 @@
-# Fuente unica de verdad de la topologia (Entrega 1)
+# Fuente unica de verdad de la topologia (Entregas 1 y 2)
 asn: 65000
 hello_multiplier: 10          # OSPF: hello 100 ms, dead 1 s (reconvergencia < 1 s)
 credentials:
@@ -9,16 +9,75 @@ srv6_prefix: "fc00:0"        # nodo N (ultimo octeto del loopback): locator fc00
 vlans:
   - {id: 10, vni: 10010, name: IT-Oficinas,  subnet: 10.10.0.0/24}
   - {id: 20, vni: 10020, name: OT-Produccion, subnet: 10.20.0.0/24}
+  # Entrega 2
+  - {id: 30, vni: 10030, name: 5G-Transporte-N2N3, subnet: 10.30.0.0/24}
+  - {id: 40, vni: 10040, name: 5G-N6,              subnet: 10.40.0.0/24}
+  - {id: 50, vni: 10050, name: Servicios-OT,       subnet: 10.50.0.0/24}
+  - {id: 60, vni: 10060, name: F5G-Corporativo,    subnet: 10.60.0.0/24}
 spines:
   spine1: {loopback: 10.0.0.1, mgmt: 192.168.122.11}
   spine2: {loopback: 10.0.0.2, mgmt: 192.168.122.12}
 leafs:
-  leaf1: {loopback: 10.0.0.11, mgmt: 192.168.122.21, site: DC1-Guatemala, access_port: eth2, vlan: 10}
-  leaf2: {loopback: 10.0.0.12, mgmt: 192.168.122.22, site: DC1-Guatemala, access_port: eth2, vlan: 20}
-  leaf3: {loopback: 10.0.0.13, mgmt: 192.168.122.23, site: DC2-Planta,    access_port: eth2, vlan: 10}
-  leaf4: {loopback: 10.0.0.14, mgmt: 192.168.122.24, site: DC2-Planta,    access_port: eth2, vlan: 20}
+  # access: puerto de acceso -> VLAN (la gestion es siempre la interfaz de mayor numero)
+  leaf1: {loopback: 10.0.0.11, mgmt: 192.168.122.21, site: DC1-Guatemala, access: {eth2: 10, eth3: 30}}
+  leaf2: {loopback: 10.0.0.12, mgmt: 192.168.122.22, site: DC1-Guatemala, access: {eth2: 20, eth3: 40, eth4: 50}}
+  leaf3: {loopback: 10.0.0.13, mgmt: 192.168.122.23, site: DC2-Planta,    access: {eth2: 10, eth3: 30}}
+  leaf4: {loopback: 10.0.0.14, mgmt: 192.168.122.24, site: DC2-Planta,    access: {eth2: 20, eth3: 60}}
 hosts:
   host1: {mgmt: 192.168.122.31, leaf: leaf1, ip: 10.10.0.11/24}
   host2: {mgmt: 192.168.122.32, leaf: leaf2, ip: 10.20.0.12/24}
   host3: {mgmt: 192.168.122.33, leaf: leaf3, ip: 10.10.0.13/24}
   host4: {mgmt: 192.168.122.34, leaf: leaf4, ip: 10.20.0.14/24}
+
+# ---------------------------------------------------------------- Entrega 2: 5G, NFV y F5G
+servicios:                    # equipos de la Entrega 2: gestion y rol (define sus plantillas)
+  core5g: {mgmt: 192.168.122.41, role: core5g}
+  gnb:    {mgmt: 192.168.122.42, role: gnb}
+  ue:     {mgmt: 192.168.122.43, role: ue}
+  fw1:    {mgmt: 192.168.122.51, role: fw, outside: 10.40.0.2, inside: 10.50.0.2, activo: true}
+  fw2:    {mgmt: 192.168.122.52, role: fw, outside: 10.40.0.3, inside: 10.50.0.3, activo: false}
+  lb:     {mgmt: 192.168.122.53, role: lb, ip: 10.50.0.4}
+  srv1:   {mgmt: 192.168.122.54, role: srv, ip: 10.50.0.11}
+  srv2:   {mgmt: 192.168.122.55, role: srv, ip: 10.50.0.12}
+  olt:    {mgmt: 192.168.122.61, role: olt}
+  ont1:   {mgmt: 192.168.122.62, role: ont}
+  ont2:   {mgmt: 192.168.122.63, role: ont}
+  ont3:   {mgmt: 192.168.122.64, role: ont}
+
+nucleo5g:
+  plmn: {mcc: "001", mnc: "01"}
+  tac: 1
+  n2n3: 10.30.0.10            # AMF (NGAP) y UPF (GTP-U) en core5g eth0
+  n6: 10.40.0.10              # salida del UPF hacia la cadena de servicios
+  db: {local: 10.33.0.1, mongo: 10.33.0.2}
+  gnb: {n2n3: 10.30.0.20, radio: 10.99.0.1}
+  ue_radio: 10.99.0.2
+  k: 465B5CE8B199B49FAA5F0A2EE238A6BC        # credenciales de prueba de UERANSIM/Open5GS
+  opc: E8ED289DEBA952E4283B54E88E6183CA
+  # QoS por DNN (pregunta 10.3 del PDF): la telemetria robotica tiene 5QI 80 (no-GBR baja latencia,
+  # PDB 10 ms) y ARP 1 con capacidad de prioridad; el trafico administrativo 5QI 9 (best effort), ARP 8.
+  dnn:
+    iot:   {subnet: 10.45.0.0/16, gw: 10.45.0.1, tun: ogstun,  qi: 80, arp: 1, preempcion: 1, vulnerable: 2, ambr_mbps: 100}
+    admin: {subnet: 10.46.0.0/16, gw: 10.46.0.1, tun: ogstun2, qi: 9,  arp: 8, preempcion: 2, vulnerable: 1, ambr_mbps: 20}
+  abonados:
+    - {imsi: "001010000000001", nombre: robot-soldadura, dnn: iot}
+    - {imsi: "001010000000002", nombre: robot-ensamble,  dnn: iot}
+    - {imsi: "001010000000003", nombre: sensor-plc,      dnn: iot}
+    - {imsi: "001010000000004", nombre: tablet-admin,    dnn: admin}
+
+nfv:
+  vip_outside: 10.40.0.1      # puerta de enlace del UPF (N6); la tiene el firewall activo
+  vip_inside: 10.50.0.1       # puerta de enlace de los servicios OT
+  vip_lb: 10.50.0.100         # servicio publicado por el balanceador
+  red_servicios: 10.50.0.0/24
+  sondeo_s: 0.3               # orquestador: intervalo de sondeo y fallos para conmutar
+  fallos: 2
+
+f5g:                          # red optica simulada (escala 1:12 de GPON 1.244 Gbit/s de subida)
+  capacidad_mbps: 100
+  ciclo_ms: 250
+  olt: {uplink: 10.60.0.1, pon: 10.61.0.1}
+  ont:                        # T-CONT segun ITU-T G.984.3
+    ont1: {ip: 10.61.0.11, servicio: Oficinas,              tcont: 4, asegurado: 0,  maximo: 100, peso: 1}
+    ont2: {ip: 10.61.0.12, servicio: ERP-Corporativo,       tcont: 2, asegurado: 30, maximo: 100, peso: 1}
+    ont3: {ip: 10.61.0.13, servicio: Camaras-Videoanalitica, tcont: 3, asegurado: 20, maximo: 60, peso: 2}

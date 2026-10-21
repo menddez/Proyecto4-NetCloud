@@ -1,4 +1,4 @@
-# NETCLOUD-SECURE 5G/F5G – Entrega 1
+# NETCLOUD-SECURE 5G/F5G – Entregas 1 y 2
 Tejido spine-leaf **OSPFv2/OSPFv3 + BFD (underlay) + BGP EVPN/VXLAN (overlay)** con FRRouting en GNS3,
 **Segment Routing SRv6** en el kernel Linux y un **controlador SDN/IBN** propio que traduce intenciones
 en políticas SRv6. Todo automatizado con **Python + Netmiko + Jinja2**.
@@ -14,18 +14,35 @@ en políticas SRv6. Todo automatizado con **Python + Netmiko + Jinja2**.
 | Falla del spine de la intención | Protección local: 0.8 s de pérdida; controlador reoptimiza en ~11 s sin pérdida adicional | mismo archivo |
 | Alta automática de servicio (VLAN 30 → VNI 10030) | 1 llamada a la API; rutas EVPN tipo 3 en los 4 VTEPs | `servicio_*.txt` |
 
+## Entrega 2: 5G privado, NFV y F5G (2026-10-21)
+Sobre el mismo fabric: núcleo **Open5GS** + gNodeB/UEs **UERANSIM** (N2/N3 por EVPN VNI 10030), cadena de servicios
+**UPF → firewall nftables (activo/respaldo) → balanceador HAProxy → servidores** con un **orquestador NFV** que conmuta
+y re-instancia, y una **red óptica F5G simulada** (OLT, splitter, 3 ONT) con **DBA** propio. Guía y evidencias:
+[`DEFENSA2.md`](DEFENSA2.md); diseño: `docs/superpowers/specs/2026-10-21-entrega2-design.md`.
+
+| Prueba | Resultado | Evidencia |
+|---|---|---|
+| Registro 5G | 4/4 UEs registrados con sesión PDU y QoS por DNN (5QI 80 / 5QI 9) | `5g_registro_*.txt` |
+| Latencia 5G extremo a extremo | 2.5 – 3.1 ms (< 10 ms) a través de toda la cadena | `5g_latencia_sfc_*.txt` |
+| SFC y política | Balanceo srv1/srv2 6/6; tráfico `admin` → OT bloqueado y contado | mismo archivo |
+| Falla del firewall (`docker kill`) | Conmutación 0.73 s, interrupción 1.05 s, re-instancia 9.1 s | `nfv_failover_*.txt` |
+| DBA F5G en contención | Asegurados respetados, excedente por peso, total ≤ 100 Mbit/s | `f5g_throughput_*.txt`, `.svg` |
+
 ## Estructura del repositorio
 | Carpeta | Contenido |
 |---|---|
 | `automation/` | `deploy.py`, `verify.py`, `convergence_test.py` (Netmiko + Jinja2), `controller.py` (SDN/IBN) y `test_controller.py` |
 | `templates/` | Plantillas Jinja2 de FRR y Linux por rol |
 | `topology/topology.yaml` | Fuente única de verdad (direccionamiento, VNIs) |
-| `docker/` | Imagen `gsm-frr:1.0` (FRR + sshd) |
-| `gns3/` | `netcloud.gns3` (topología) y `crear_topologia_gns3.py` (la crea vía API REST) |
+| `docker/` | Imágenes `gsm-frr`, `gsm-5gc` (Open5GS), `gsm-ran` (UERANSIM) y `gsm-vnf` (nftables, HAProxy, OLT/ONT); `start.sh` común |
+| `templates/5g`, `templates/nfv`, `templates/f5g` | Plantillas de la Entrega 2 (núcleo, gNB/UE, firewall, balanceador, DBA) |
+| `automation/orquestador_nfv.py`, `prueba_f5g.py` | Orquestador NFV y prueba de throughput F5G; `test_dba.py`, `test_nfv.py` |
+| `gns3/` | `netcloud.gns3` (topología), `crear_topologia_gns3.py` (Entrega 1) y `agregar_entrega2.py` (agrega 5G/NFV/F5G) vía API REST |
 | `scripts/arranque.sh` | Arranque diario dentro de la GNS3 VM (red de gestión + despliegue) |
 | `scripts/controlador.sh` | Inicia/reinicia el controlador en segundo plano |
 | `scripts/levantar_lab.ps1` | **Desde Windows**: levanta GNS3, la VM, el proyecto, la configuración y el controlador en un paso |
 | `DEFENSA.md` | Guía de la demostración en vivo y lista de evidencias |
+| `scripts/prueba_5g.sh`, `prueba_nfv.sh`, `orquestador.sh`, `estado_5g.sh` | Evidencias 5G/SFC, falla NFV, orquestador y resumen (Entrega 2) |
 | `scripts/prueba_ibn.sh` | Demostración completa SRv6 + IBN + falla de spine (para la defensa) |
 | `evidence/` | Salidas de verificación, reconvergencia, IBN, bitácora del controlador y `capturas/*.pcap` (Wireshark) |
 

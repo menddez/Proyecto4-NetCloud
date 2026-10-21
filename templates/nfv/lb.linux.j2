@@ -1,0 +1,6 @@
+# Balanceador: IP propia + IP virtual del servicio; responde a los UEs por el firewall activo
+ip addr replace {{ ip }}/24 dev eth0
+ip addr replace {{ nfv.vip_lb }}/24 dev eth0
+ip route replace default via {{ nfv.vip_inside }}
+pkill haproxy 2>/dev/null; sleep 0.3
+haproxy -f /etc/gsm/haproxy.cfg

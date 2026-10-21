@@ -1,0 +1,9 @@
+# OLT: uplink al fabric (eth0, VNI 10060) y puerto PON hacia el splitter (eth1)
+ip addr replace {{ f5g.olt.uplink }}/24 dev eth0
+ip addr replace {{ f5g.olt.pon }}/24 dev eth1
+# Un servidor iperf3 por ONT para medir el throughput de subida del PON
+pkill iperf3 2>/dev/null; pkill -f /etc/gsm/olt_dba.py 2>/dev/null; sleep 0.3
+{% for o in f5g.ont %}
+iperf3 -s -D -p {{ 5200 + loop.index }}
+{% endfor %}
+nohup python3 /etc/gsm/olt_dba.py </dev/null >/var/log/dba.log 2>&1 &

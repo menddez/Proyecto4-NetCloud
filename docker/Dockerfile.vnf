@@ -1,0 +1,11 @@
+# VNFs y equipos de servicio: firewall (nftables), balanceador (HAProxy), servidores, OLT y ONT
+FROM alpine:3.20
+RUN apk add --no-cache bash openssh-server iproute2 iproute2-tc iputils nftables haproxy iperf3 tcpdump \
+      python3 curl \
+ && echo 'root:gsm12345' | chpasswd \
+ && sed -i 's#^root:\(.*\):/bin/ash#root:\1:/bin/bash#' /etc/passwd \
+ && printf 'PermitRootLogin yes\nPasswordAuthentication yes\n' > /etc/ssh/sshd_config \
+ && printf "export PS1='\\h:\\w# '\n" > /root/.bash_profile && cp /root/.bash_profile /root/.bashrc
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+CMD ["/start.sh"]

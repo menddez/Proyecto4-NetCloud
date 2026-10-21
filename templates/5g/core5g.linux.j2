@@ -1,0 +1,15 @@
+# Nucleo 5G: interfaces N2/N3 (eth0), N6 (eth1) y base de datos (eth2); un tunel del UPF por DNN
+mkdir -p /etc/gsm5g /opt/open5gs/var/log/open5gs
+ip addr replace {{ c5g.n2n3 }}/24 dev eth0
+ip addr replace {{ c5g.n6 }}/24 dev eth1
+ip addr replace {{ c5g.db.local }}/30 dev eth2
+sysctl -qw net.ipv4.ip_forward=1
+[ -c /dev/net/tun ] || { mkdir -p /dev/net; mknod /dev/net/tun c 10 200; }
+{% for dnn_name, d in c5g.dnn.items() %}
+# DNN {{ dnn_name }}: {{ d.subnet }}
+ip tuntap add name {{ d.tun }} mode tun 2>/dev/null || true
+ip addr replace {{ d.gw }}/{{ d.subnet.split('/')[1] }} dev {{ d.tun }}
+ip link set {{ d.tun }} up
+{% endfor %}
+# Interfaz N6: los servicios OT se alcanzan a traves de la cadena de funciones (VIP del firewall activo)
+ip route replace {{ nfv.red_servicios }} via {{ nfv.vip_outside }}

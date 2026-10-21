@@ -1,0 +1,15 @@
+# UERANSIM gNodeB - generado por deploy.py desde topology.yaml
+mcc: '{{ c5g.plmn.mcc }}'
+mnc: '{{ c5g.plmn.mnc }}'
+nci: '0x000000010'
+idLength: 32
+tac: {{ c5g.tac }}
+linkIp: {{ c5g.gnb.radio }}
+ngapIp: {{ c5g.gnb.n2n3 }}
+gtpIp: {{ c5g.gnb.n2n3 }}
+amfConfigs:
+  - address: {{ c5g.n2n3 }}
+    port: 38412
+slices:
+  - sst: 1
+ignoreStreamIds: true

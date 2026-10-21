@@ -10,14 +10,14 @@ import argparse
 import base64
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from common import ROOT, PLAN, build_contexts, connect, jinja_env, load_topology
+from common import ETAPAS, ROOT, PLAN, build_contexts, connect, jinja_env, load_topology
 
 
 def push_text(conn, text, path):
     """Escribe texto en el nodo en trozos base64 (evita el limite de linea del TTY)."""
     b64 = base64.b64encode(text.encode()).decode()
     tmp = f"{path}.b64"
-    conn.send_command(f"rm -f {tmp}")
+    conn.send_command(f"mkdir -p {path.rsplit('/', 1)[0]}; rm -f {tmp}")
     for i in range(0, len(b64), 400):
         conn.send_command(f"echo -n '{b64[i:i+400]}' >> {tmp}")
     conn.send_command(f"base64 -d {tmp} > {path} && rm -f {tmp}")
@@ -26,7 +26,10 @@ def push_text(conn, text, path):
 def render_all(topo):
     env, ctxs, out = jinja_env(), build_contexts(topo), {}
     for name, ctx in ctxs.items():
-        out[name] = [(env.get_template(t).render(**ctx), remote, cmd) for t, remote, cmd in PLAN[ctx["role"]]]
+        plan = PLAN[ctx["role"]]
+        steps = plan(ctx) if callable(plan) else plan
+        out[name] = [(env.get_template(t).render(**ctx, **(extra[0] if extra else {})), remote, cmd)
+                     for t, remote, cmd, *extra in steps]
     return out
 
 
@@ -61,13 +64,16 @@ def main():
         print(f"Configuraciones generadas en {ROOT / 'build'}")
         return
 
-    with ThreadPoolExecutor(max_workers=6) as ex:
-        futs = {ex.submit(deploy_node, topo, n, s): n for n, s in rendered.items()}
-        for f in as_completed(futs):
-            try:
-                print(f.result())
-            except Exception as e:
-                print(f"[{futs[f]}] ERROR: {e}")
+    especiales = set().union(*(e for e in ETAPAS if e))
+    for etapa in ETAPAS:
+        grupo = {n: s for n, s in rendered.items() if (n in etapa if etapa else n not in especiales)}
+        with ThreadPoolExecutor(max_workers=8) as ex:
+            futs = {ex.submit(deploy_node, topo, n, s): n for n, s in grupo.items()}
+            for f in as_completed(futs):
+                try:
+                    print(f.result(), flush=True)
+                except Exception as e:
+                    print(f"[{futs[f]}] ERROR: {e}", flush=True)
 
 
 if __name__ == "__main__":

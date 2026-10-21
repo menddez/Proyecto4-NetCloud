@@ -10,8 +10,8 @@ en políticas SRv6. Todo automatizado con **Python + Netmiko + Jinja2**.
 | L2 extendida entre sitios (VNI 10010 y 10020) | 4/4 pings sin pérdida | mismo archivo |
 | Caída real de un spine (modo `crash`) | **0.19 s** promedio (6/6 corridas < 1 s) | `convergencia_crash_*` |
 | Caída de enlaces de un spine (modo `links`) | 0.01 s | `convergencia_links_*` |
-| SRv6: VXLAN OT (VNI 10020) dirigido por spine2 | Capturado con SRH (`segleft` 1→0); el otro spine no ve el flujo | `ibn_20261020_175315.txt` |
-| Falla del spine de la intención | Protección local: 0.75 s de pérdida; controlador reoptimiza en 10.5 s sin pérdida adicional | mismo archivo |
+| SRv6: VXLAN OT (VNI 10020) dirigido por spine2 | Capturado con SRH (`segleft` 1→0); el otro spine no ve el flujo | `ibn_20261021_172552.txt` |
+| Falla del spine de la intención | Protección local: 0.8 s de pérdida; controlador reoptimiza en ~11 s sin pérdida adicional | mismo archivo |
 | Alta automática de servicio (VLAN 30 → VNI 10030) | 1 llamada a la API; rutas EVPN tipo 3 en los 4 VTEPs | `servicio_*.txt` |
 
 ## Estructura del repositorio

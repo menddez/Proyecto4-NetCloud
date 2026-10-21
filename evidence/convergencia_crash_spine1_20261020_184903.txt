@@ -1,0 +1,5 @@
+# Reconvergencia - 2026-10-20 18:49
+Fallo: spine1 (modo crash)
+Ping host1 -> 10.10.0.13 cada 10 ms
+Corridas (s): [0.19]
+Promedio: 0.19 s

@@ -28,6 +28,9 @@ Invoke-RestMethod -Method Post "$api/projects/$($p.project_id)/nodes/start" -Bod
 Write-Host 'Proyecto netcloud abierto y nodos iniciados'
 Start-Sleep 15
 
+# La VM puede quedar con la hora atrasada si VirtualBox la pauso: se sincroniza con Windows
+$epoch = [DateTimeOffset]::UtcNow.ToUnixTimeSeconds()
+ssh $vm "sudo -n date -u -s @$epoch >/dev/null"
 Write-Host 'Desplegando configuracion (Netmiko) e iniciando el controlador...'
 ssh $vm 'set -o pipefail; bash ~/arranque.sh 2>&1 | grep -v vtysh.conf && rm -f ~/netcloud-secure/automation/controller_state.json && sh ~/netcloud-secure/scripts/controlador.sh'
 if ($LASTEXITCODE -ne 0) { throw 'Fallo el despliegue: revisa los nodos marcados FALLA arriba' }

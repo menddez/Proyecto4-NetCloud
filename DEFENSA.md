@@ -83,7 +83,7 @@ Ya está en el repositorio (carpeta `evidence/`), lista para citarse en el infor
 | `verify_20261020_175105.txt` | OSPFv2/OSPFv3/BFD, `show bgp l2vpn evpn`, VNIs, rutas tipo 2 y 3, SIDs SRv6, pings L2 | "verificación de tablas EVPN" y "conectividad L2 extendida" |
 | `convergencia_crash_spine1_*.txt`, `convergencia_crash_spine2_*.txt` | Caída real de cada spine: 0.19 s promedio | Prueba de convergencia < 1 s y fallo de spine |
 | `convergencia_links_spine1_*.txt` | Caída solo de enlaces: 0.01 s (comparación) | Análisis de convergencia |
-| `ibn_20261020_175315.txt` | Intención, política SRv6, captura con SRH, falla y reprogramación | SDN, SRv6, IBN |
+| `ibn_20261021_172552.txt` | Intención, política SRv6, captura con SRH, falla y reprogramación | SDN, SRv6, IBN |
 | `servicio_20261020_175439.txt` | Alta de VNI 10030 por API y anuncio EVPN | Aprovisionamiento automático |
 | `controller.log` | Bitácora de decisiones del controlador | Bitácoras de automatización |
 | `capturas/*.pcap` | Abrir con Wireshark: VXLAN (VNI 10010), SRv6 con SRH y VXLAN dentro (VNI 10020), BFD/OSPF | Análisis de tráfico |

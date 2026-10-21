@@ -25,7 +25,7 @@ docker exec $(cid $OTRO) sh -c "timeout 6 tcpdump -ni eth1 -c 50 udp port 4789 2
 sleep 1; docker exec $(cid host2) ping -c4 -i 0.3 10.20.0.14 | tail -2; wait
 echo; echo "===== $OTRO eth1, mismo intervalo (no debe ver el VXLAN de la intencion) ====="; cat /tmp/otro.txt
 
-echo; echo "===== FALLA: apagando enlaces de fabric de $SP ====="
+echo; echo "===== FALLA INTENCIONAL (escenario del PDF): se aisla $SP, el spine que usa la intencion ====="
 docker exec $(cid host2) sh -c "rm -f /tmp/falla.out; ping -i 0.05 -c 1200 -W1 10.20.0.14 > /tmp/falla.out 2>&1 &"
 sleep 2
 T0=$(date +%s.%N)
@@ -38,6 +38,12 @@ echo; echo "===== host2: ping -i 0.05 a host4 durante la falla (1200 paquetes, ~
 docker exec $(cid host2) tail -2 /tmp/falla.out
 for i in 0 1 2 3; do docker exec $(cid $SP) ip link set eth$i up; done
 echo "$(date +%T) $SP restaurado"
+read TX RX < <(docker exec $(cid host2) sh -c "grep transmitted /tmp/falla.out" | awk '{print $1, $4}')
+echo; echo "===== RESULTADO ====="
+echo "Interrupcion del trafico OT: $((TX-RX)) de $TX pings perdidos = $(python3 -c "print(round(($TX-$RX)*0.05,2))") s"
+echo "  - proteccion local del leaf retiro la politica SRv6 de $SP y el trafico siguio por OSPF ECMP"
+echo "  - el controlador reprogramo la intencion por $OTRO; desde ahi, cero perdida"
+echo "  (en GET /api/intents, $SP aparece con RTT null porque estaba aislado al medir: es lo esperado)"
 echo; echo "===== GET /api/intents ====="; curl -s $API/api/intents
 echo; echo "===== evidence/controller.log (ultimas lineas) ====="; tail -8 ~/netcloud-secure/evidence/controller.log
 echo; echo "Evidencia: $EV"

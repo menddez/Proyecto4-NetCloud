@@ -1,0 +1,87 @@
+# Prueba SDN/IBN + SRv6 - 2026-10-21 17:25:52
+
+===== POST /api/intents =====
+{
+  "name": "ot-produccion",
+  "src": "leaf2",
+  "dst": "leaf4",
+  "avoid": [],
+  "max_rtt_ms": 10,
+  "rtts": {
+    "spine1": 0.53,
+    "spine2": 0.41
+  },
+  "updated": "17:25:56",
+  "spine": "spine2",
+  "segments": "fc00:0:2::e,fc00:0:14::d4",
+  "status": "ACTIVA"
+}
+===== leaf2# ip rule / ip route show table 100 =====
+100:	from all to 10.0.0.14 lookup 100
+10.0.0.14  encap seg6 mode encap segs 2 [ fc00:0:2::e fc00:0:14::d4 ] dev eth1 scope link 
+
+===== spine2 eth1 (hacia leaf2): tcpdump durante ping host2 -> host4 =====
+tcpdump: listening on eth1, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+17:25:58.412824 IP6 (hlim 64, next-header Routing (43) payload length: 174) fc00:0:12::1 > fc00:0:2::e: RT6 (len=4, type=4, segleft=1, last-entry=1, flags=0x0, tag=0, [0]fc00:0:14::d4, [1]fc00:0:2::e) IP (tos 0x0, ttl 64, id 39882, offset 0, flags [none], proto UDP (17), length 134)
+    10.0.0.12.36049 > 10.0.0.14.4789: VXLAN, flags [I] (0x08), vni 10020
+IP (tos 0x0, ttl 64, id 48610, offset 0, flags [DF], proto ICMP (1), length 84)
+    10.20.0.12 > 10.20.0.14: ICMP echo request, id 13001, seq 1, length 64
+17:25:58.413267 IP6 (hlim 63, next-header Routing (43) payload length: 174) fc00:0:14::1 > fc00:0:12::d4: RT6 (len=4, type=4, segleft=0, last-entry=1, flags=0x0, tag=0, [0]fc00:0:12::d4, [1]fc00:0:2::e) IP (tos 0x0, ttl 64, id 49155, offset 0, flags [none], proto UDP (17), length 134)
+    10.0.0.14.36049 > 10.0.0.12.4789: VXLAN, flags [I] (0x08), vni 10020
+IP (tos 0x0, ttl 64, id 15576, offset 0, flags [none], proto ICMP (1), length 84)
+    10.20.0.14 > 10.20.0.12: ICMP echo reply, id 13001, seq 1, length 64
+2 packets captured
+2 packets received by filter
+0 packets dropped by kernel
+4 packets transmitted, 4 received, 0% packet loss, time 922ms
+rtt min/avg/max/mdev = 0.476/0.684/0.948/0.189 ms
+
+===== spine1 eth1, mismo intervalo (no debe ver el VXLAN de la intencion) =====
+0 packets captured
+0 packets received by filter
+0 packets dropped by kernel
+
+===== FALLA INTENCIONAL (escenario del PDF): se aisla spine2, el spine que usa la intencion =====
+17:26:05 spine2 aislado
+17:26:16 controlador reprogramo la intencion via spine1 en 10.6 s
+
+===== host2: ping -i 0.05 a host4 durante la falla (1200 paquetes, ~60 s) =====
+1200 packets transmitted, 1184 received, 1.33333% packet loss, time 62890ms
+rtt min/avg/max/mdev = 0.246/0.796/25.959/1.006 ms
+17:27:07 spine2 restaurado
+
+===== RESULTADO =====
+Interrupcion del trafico OT: 16 de 1200 pings perdidos = 0.8 s
+  - proteccion local del leaf retiro la politica SRv6 de spine2 y el trafico siguio por OSPF ECMP
+  - el controlador reprogramo la intencion por spine1; desde ahi, cero perdida
+  (en GET /api/intents, spine2 aparece con RTT null porque estaba aislado al medir: es lo esperado)
+
+===== GET /api/intents =====
+{
+  "ot-produccion": {
+    "name": "ot-produccion",
+    "src": "leaf2",
+    "dst": "leaf4",
+    "avoid": [],
+    "max_rtt_ms": 10,
+    "rtts": {
+      "spine1": 0.47,
+      "spine2": null
+    },
+    "updated": "17:26:14",
+    "spine": "spine1",
+    "segments": "fc00:0:1::e,fc00:0:14::d4",
+    "status": "ACTIVA"
+  }
+}
+===== evidence/controller.log (ultimas lineas) =====
+
+You can also look at the Netmiko session_log or debug log for more information.
+
+
+2026-10-21 17:25:53 [ot-produccion] eliminada; trafico vuelve a OSPF ECMP
+2026-10-21 17:25:57 [ot-produccion] leaf2<->leaf4 via spine2 (RTT 0.41 ms) segs [fc00:0:2::e,fc00:0:14::d4]
+2026-10-21 17:26:12 [ot-produccion] spine2 proteccion local retiro la politica: recalculando
+2026-10-21 17:26:15 [ot-produccion] leaf2<->leaf4 via spine1 (RTT 0.47 ms) segs [fc00:0:1::e,fc00:0:14::d4]
+
+Evidencia: /home/gns3/netcloud-secure/evidence/ibn_20261021_172552.txt

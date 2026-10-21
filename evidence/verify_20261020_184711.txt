@@ -1,0 +1,922 @@
+# Verificacion Entrega 1 - 2026-10-20 18:46:49
+
+
+===== spine1# show ip ospf neighbor =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+
+Neighbor ID     Pri State           Up Time         Dead Time Address         Interface                        RXmtL RqstL DBsmL
+10.0.0.11         1 Full/-          14m26s             0.999s 10.1.1.1        eth0:10.1.1.0                        0     0     0
+10.0.0.12         1 Full/-          14m30s             0.999s 10.1.1.3        eth1:10.1.1.2                        0     0     0
+10.0.0.13         1 Full/-          14m36s             0.999s 10.1.1.5        eth2:10.1.1.4                        0     0     0
+10.0.0.14         1 Full/-          54m19s             0.899s 10.1.1.7        eth3:10.1.1.6                        0     0     0
+
+
+===== spine1# show bgp l2vpn evpn summary =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+BGP router identifier 10.0.0.1, local AS number 65000 vrf-id 0
+BGP table version 0
+RIB entries 23, using 4416 bytes of memory
+Peers 4, using 2868 KiB of memory
+Peer groups 1, using 64 bytes of memory
+
+Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt Desc
+10.0.0.11       4      65000      1617      1860        0    0    0 00:14:26            3       12 N/A
+10.0.0.12       4      65000      1600      1835        0    0    0 00:54:20            3       12 N/A
+10.0.0.13       4      65000      1602      1838        0    0    0 00:54:19            3       12 N/A
+10.0.0.14       4      65000      1613      1860        0    0    0 00:54:20            3       12 N/A
+
+Total number of neighbors 4
+
+===== spine1# show ipv6 ospf6 neighbor =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+Neighbor ID     Pri    DeadTime    State/IfState         Duration I/F[State]
+10.0.0.11         1    00:00:02     Full/PointToPoint    00:00:13 eth0[PointToPoint]
+10.0.0.12         1    00:00:02     Full/PointToPoint    00:00:08 eth1[PointToPoint]
+10.0.0.13         1    00:00:02     Full/PointToPoint    00:00:13 eth2[PointToPoint]
+10.0.0.14         1    00:00:02     Full/PointToPoint    00:00:13 eth3[PointToPoint]
+
+===== spine1# show bfd peers brief =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+Session count: 8
+SessionId  LocalAddress                             PeerAddress                             Status         
+=========  ============                             ===========                             ======         
+110490448  fe80::42:c6ff:feec:d300                  fe80::42:5bff:fed9:8100                 up             
+3873331059 fe80::42:c6ff:feec:d301                  fe80::42:62ff:fe8d:300                  up             
+3547044102 0.0.0.0                                  10.1.1.3                                up             
+2246842699 0.0.0.0                                  10.1.1.5                                up             
+242703079  0.0.0.0                                  10.1.1.7                                up             
+3779389249 0.0.0.0                                  10.1.1.1                                up             
+700951521  fe80::42:c6ff:feec:d303                  fe80::42:71ff:fec6:4d00                 up             
+4208902916 fe80::42:c6ff:feec:d302                  fe80::42:bff:fe08:8600                  up             
+
+===== spine1# SIDs SRv6 locales (ip -6 route | seg6local) =====
+
+fc00:0:1::e  encap seg6local action End dev sr0 metric 1024 pref medium
+
+===== spine2# show ip ospf neighbor =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+
+Neighbor ID     Pri State           Up Time         Dead Time Address         Interface                        RXmtL RqstL DBsmL
+10.0.0.11         1 Full/-          14m32s             0.957s 10.1.2.1        eth0:10.1.2.0                        0     0     0
+10.0.0.12         1 Full/-          14m37s             0.957s 10.1.2.3        eth1:10.1.2.2                        0     0     0
+10.0.0.13         1 Full/-          14m32s             0.957s 10.1.2.5        eth2:10.1.2.4                        0     0     0
+10.0.0.14         1 Full/-          52m15s             0.957s 10.1.2.7        eth3:10.1.2.6                        0     0     0
+
+
+===== spine2# show bgp l2vpn evpn summary =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+BGP router identifier 10.0.0.2, local AS number 65000 vrf-id 0
+BGP table version 0
+RIB entries 23, using 4416 bytes of memory
+Peers 4, using 2868 KiB of memory
+Peer groups 1, using 64 bytes of memory
+
+Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt Desc
+10.0.0.11       4      65000      1570      1799        0    0    0 00:14:27            3       12 N/A
+10.0.0.12       4      65000      1574      1800        0    0    0 00:14:30            3       12 N/A
+10.0.0.13       4      65000      1570      1799        0    0    0 00:14:27            3       12 N/A
+10.0.0.14       4      65000      1581      1810        0    0    0 00:52:16            3       12 N/A
+
+Total number of neighbors 4
+
+===== spine2# show ipv6 ospf6 neighbor =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+Neighbor ID     Pri    DeadTime    State/IfState         Duration I/F[State]
+10.0.0.11         1    00:00:02     Full/PointToPoint    00:00:14 eth0[PointToPoint]
+10.0.0.12         1    00:00:02     Full/PointToPoint    00:00:14 eth1[PointToPoint]
+10.0.0.13         1    00:00:02     Full/PointToPoint    00:00:09 eth2[PointToPoint]
+10.0.0.14         1    00:00:02     Full/PointToPoint    00:00:14 eth3[PointToPoint]
+
+===== spine2# show bfd peers brief =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+Session count: 8
+SessionId  LocalAddress                             PeerAddress                             Status         
+=========  ============                             ===========                             ======         
+4206719253 fe80::42:9cff:fe00:3702                  fe80::42:bff:fe08:8601                  up             
+321481246  fe80::42:9cff:fe00:3700                  fe80::42:5bff:fed9:8101                 up             
+1808834188 0.0.0.0                                  10.1.2.1                                up             
+3517944669 0.0.0.0                                  10.1.2.5                                up             
+3598152922 0.0.0.0                                  10.1.2.7                                up             
+2411459908 fe80::42:9cff:fe00:3701                  fe80::42:62ff:fe8d:301                  up             
+863381637  fe80::42:9cff:fe00:3703                  fe80::42:71ff:fec6:4d01                 up             
+184175982  0.0.0.0                                  10.1.2.3                                up             
+
+===== spine2# SIDs SRv6 locales (ip -6 route | seg6local) =====
+
+fc00:0:2::e  encap seg6local action End dev sr0 metric 1024 pref medium
+
+===== leaf1# show ip ospf neighbor =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+
+Neighbor ID     Pri State           Up Time         Dead Time Address         Interface                        RXmtL RqstL DBsmL
+10.0.0.1          1 Full/-          14m27s             0.909s 10.1.1.0        eth0:10.1.1.1                        0     0     0
+10.0.0.2          1 Full/-          14m32s             0.909s 10.1.2.0        eth1:10.1.2.1                        0     0     0
+
+
+===== leaf1# show bgp l2vpn evpn summary =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+BGP router identifier 10.0.0.11, local AS number 65000 vrf-id 0
+BGP table version 0
+RIB entries 23, using 4416 bytes of memory
+Peers 2, using 1434 KiB of memory
+Peer groups 1, using 64 bytes of memory
+
+Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt Desc
+10.0.0.1        4      65000      1763      1662        0    0    0 00:14:28            9        3 N/A
+10.0.0.2        4      65000      1718      1620        0    0    0 00:14:28            9        3 N/A
+
+Total number of neighbors 2
+
+===== leaf1# show evpn vni =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+VNI        Type VxLAN IF              # MACs   # ARPs   # Remote VTEPs  Tenant VRF                           
+10010      L2   vxlan10010            0        0        3               default                              
+10030      L2   vxlan10030            0        0        3               default                              
+10020      L2   vxlan10020            0        0        3               default                              
+
+===== leaf1# show ipv6 ospf6 neighbor =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+Neighbor ID     Pri    DeadTime    State/IfState         Duration I/F[State]
+10.0.0.1          1    00:00:02     Full/PointToPoint    00:00:10 eth0[PointToPoint]
+10.0.0.2          1    00:00:02     Full/PointToPoint    00:00:15 eth1[PointToPoint]
+
+===== leaf1# show ipv6 route ospf6 =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+Codes: K - kernel route, C - connected, S - static, R - RIPng,
+       O - OSPFv3, I - IS-IS, B - BGP, N - NHRP, T - Table,
+       v - VNC, V - VNC-Direct, A - Babel, F - PBR,
+       f - OpenFabric,
+       > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+       t - trapped, o - offload failure
+
+O>* fc00:0:1::/48 [110/20] via fe80::42:c6ff:feec:d300, eth0, weight 1, 00:00:01
+O>* fc00:0:2::/48 [110/20] via fe80::42:9cff:fe00:3700, eth1, weight 1, 00:00:01
+O   fc00:0:11::/48 [110/10] is directly connected, sr0, weight 1, 00:00:01
+O>* fc00:0:12::/48 [110/30] via fe80::42:9cff:fe00:3700, eth1, weight 1, 00:00:01
+  *                         via fe80::42:c6ff:feec:d300, eth0, weight 1, 00:00:01
+O>* fc00:0:13::/48 [110/30] via fe80::42:9cff:fe00:3700, eth1, weight 1, 00:00:01
+  *                         via fe80::42:c6ff:feec:d300, eth0, weight 1, 00:00:01
+O>* fc00:0:14::/48 [110/30] via fe80::42:9cff:fe00:3700, eth1, weight 1, 00:00:01
+  *                         via fe80::42:c6ff:feec:d300, eth0, weight 1, 00:00:01
+
+===== leaf1# show bfd peers brief =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+Session count: 4
+SessionId  LocalAddress                             PeerAddress                             Status         
+=========  ============                             ===========                             ======         
+1238041456 fe80::42:5bff:fed9:8100                  fe80::42:c6ff:feec:d300                 up             
+997413795  0.0.0.0                                  10.1.1.0                                up             
+3518387417 0.0.0.0                                  10.1.2.0                                up             
+633077051  fe80::42:5bff:fed9:8101                  fe80::42:9cff:fe00:3700                 up             
+
+===== leaf1# show bgp l2vpn evpn route type macip =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+No EVPN prefixes (of requested type) exist
+
+===== leaf1# show bgp l2vpn evpn route type multicast =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+BGP table version is 5, local router ID is 10.0.0.11
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal
+Origin codes: i - IGP, e - EGP, ? - incomplete
+EVPN type-1 prefix: [1]:[EthTag]:[ESI]:[IPlen]:[VTEP-IP]:[Frag-id]
+EVPN type-2 prefix: [2]:[EthTag]:[MAClen]:[MAC]:[IPlen]:[IP]
+EVPN type-3 prefix: [3]:[EthTag]:[IPlen]:[OrigIP]
+EVPN type-4 prefix: [4]:[ESI]:[IPlen]:[OrigIP]
+EVPN type-5 prefix: [5]:[EthTag]:[IPlen]:[IP]
+
+   Network          Next Hop            Metric LocPrf Weight Path
+                    Extended Community
+Route Distinguisher: 10.0.0.11:2
+*> [3]:[0]:[32]:[10.0.0.11]
+                    10.0.0.11                          32768 i
+                    ET:8 RT:65000:10010
+Route Distinguisher: 10.0.0.11:3
+*> [3]:[0]:[32]:[10.0.0.11]
+                    10.0.0.11                          32768 i
+                    ET:8 RT:65000:10020
+Route Distinguisher: 10.0.0.11:4
+*> [3]:[0]:[32]:[10.0.0.11]
+                    10.0.0.11                          32768 i
+                    ET:8 RT:65000:10030
+Route Distinguisher: 10.0.0.12:2
+*>i[3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                0    100      0 i
+                    RT:65000:10010 ET:8
+* i[3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                0    100      0 i
+                    RT:65000:10010 ET:8
+Route Distinguisher: 10.0.0.12:3
+*>i[3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                0    100      0 i
+                    RT:65000:10020 ET:8
+* i[3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                0    100      0 i
+                    RT:65000:10020 ET:8
+Route Distinguisher: 10.0.0.12:4
+*>i[3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                0    100      0 i
+                    RT:65000:10030 ET:8
+* i[3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                0    100      0 i
+                    RT:65000:10030 ET:8
+Route Distinguisher: 10.0.0.13:2
+*>i[3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                0    100      0 i
+                    RT:65000:10010 ET:8
+* i[3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                0    100      0 i
+                    RT:65000:10010 ET:8
+Route Distinguisher: 10.0.0.13:3
+*>i[3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                0    100      0 i
+                    RT:65000:10020 ET:8
+* i[3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                0    100      0 i
+                    RT:65000:10020 ET:8
+Route Distinguisher: 10.0.0.13:4
+*>i[3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                0    100      0 i
+                    RT:65000:10030 ET:8
+* i[3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                0    100      0 i
+                    RT:65000:10030 ET:8
+Route Distinguisher: 10.0.0.14:2
+*>i[3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                0    100      0 i
+                    RT:65000:10010 ET:8
+* i[3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                0    100      0 i
+                    RT:65000:10010 ET:8
+Route Distinguisher: 10.0.0.14:3
+*>i[3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                0    100      0 i
+                    RT:65000:10020 ET:8
+* i[3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                0    100      0 i
+                    RT:65000:10020 ET:8
+Route Distinguisher: 10.0.0.14:4
+*>i[3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                0    100      0 i
+                    RT:65000:10030 ET:8
+* i[3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                0    100      0 i
+                    RT:65000:10030 ET:8
+
+Displayed 12 prefixes (21 paths) (of requested type)
+
+===== leaf1# SIDs SRv6 locales (ip -6 route | seg6local) =====
+
+fc00:0:11::e  encap seg6local action End dev sr0 metric 1024 pref medium
+fc00:0:11::d4  encap seg6local action End.DX4 nh4 10.0.0.11 dev sr0 metric 1024 pref medium
+
+===== leaf1# bridge fdb show (entradas VXLAN) =====
+
+e6:ee:13:24:99:12 dev vxlan10010 vlan 1 master br10 permanent
+e6:ee:13:24:99:12 dev vxlan10010 master br10 permanent
+00:00:00:00:00:00 dev vxlan10010 dst 10.0.0.12 self permanent
+00:00:00:00:00:00 dev vxlan10010 dst 10.0.0.13 self permanent
+00:00:00:00:00:00 dev vxlan10010 dst 10.0.0.14 self permanent
+7a:19:9f:e7:2f:57 dev vxlan10020 vlan 1 master br20 permanent
+7a:19:9f:e7:2f:57 dev vxlan10020 master br20 permanent
+00:00:00:00:00:00 dev vxlan10020 dst 10.0.0.12 self permanent
+00:00:00:00:00:00 dev vxlan10020 dst 10.0.0.13 self permanent
+00:00:00:00:00:00 dev vxlan10020 dst 10.0.0.14 self permanent
+be:a4:41:8a:95:78 dev vxlan10030 vlan 1 master br30 permanent
+be:a4:41:8a:95:78 dev vxlan10030 master br30 permanent
+00:00:00:00:00:00 dev vxlan10030 dst 10.0.0.12 self permanent
+00:00:00:00:00:00 dev vxlan10030 dst 10.0.0.13 self permanent
+00:00:00:00:00:00 dev vxlan10030 dst 10.0.0.14 self permanent
+
+===== leaf2# show ip ospf neighbor =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+
+Neighbor ID     Pri State           Up Time         Dead Time Address         Interface                        RXmtL RqstL DBsmL
+10.0.0.1          1 Full/-          14m29s             0.925s 10.1.1.2        eth0:10.1.1.3                        0     0     0
+10.0.0.2          1 Full/-          14m39s             0.925s 10.1.2.2        eth1:10.1.2.3                        0     0     0
+
+
+===== leaf2# show bgp l2vpn evpn summary =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+BGP router identifier 10.0.0.12, local AS number 65000 vrf-id 0
+BGP table version 0
+RIB entries 23, using 4416 bytes of memory
+Peers 2, using 1434 KiB of memory
+Peer groups 1, using 64 bytes of memory
+
+Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt Desc
+10.0.0.1        4      65000      1764      1650        0    0    0 00:54:23            9        3 N/A
+10.0.0.2        4      65000      1727      1609        0    0    0 00:14:32            9        3 N/A
+
+Total number of neighbors 2
+
+===== leaf2# show evpn vni =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+VNI        Type VxLAN IF              # MACs   # ARPs   # Remote VTEPs  Tenant VRF                           
+10010      L2   vxlan10010            0        0        3               default                              
+10030      L2   vxlan10030            0        0        3               default                              
+10020      L2   vxlan10020            0        0        3               default                              
+
+===== leaf2# show ipv6 ospf6 neighbor =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+Neighbor ID     Pri    DeadTime    State/IfState         Duration I/F[State]
+10.0.0.1          1    00:00:02     Full/PointToPoint    00:00:07 eth0[PointToPoint]
+10.0.0.2          1    00:00:02     Full/PointToPoint    00:00:17 eth1[PointToPoint]
+
+===== leaf2# show ipv6 route ospf6 =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+Codes: K - kernel route, C - connected, S - static, R - RIPng,
+       O - OSPFv3, I - IS-IS, B - BGP, N - NHRP, T - Table,
+       v - VNC, V - VNC-Direct, A - Babel, F - PBR,
+       f - OpenFabric,
+       > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+       t - trapped, o - offload failure
+
+O>* fc00:0:1::/48 [110/20] via fe80::42:c6ff:feec:d301, eth0, weight 1, 00:00:03
+O>* fc00:0:2::/48 [110/20] via fe80::42:9cff:fe00:3701, eth1, weight 1, 00:00:03
+O>* fc00:0:11::/48 [110/30] via fe80::42:9cff:fe00:3701, eth1, weight 1, 00:00:03
+  *                         via fe80::42:c6ff:feec:d301, eth0, weight 1, 00:00:03
+O   fc00:0:12::/48 [110/10] is directly connected, sr0, weight 1, 00:00:03
+O>* fc00:0:13::/48 [110/30] via fe80::42:9cff:fe00:3701, eth1, weight 1, 00:00:03
+  *                         via fe80::42:c6ff:feec:d301, eth0, weight 1, 00:00:03
+O>* fc00:0:14::/48 [110/30] via fe80::42:9cff:fe00:3701, eth1, weight 1, 00:00:03
+  *                         via fe80::42:c6ff:feec:d301, eth0, weight 1, 00:00:03
+
+===== leaf2# show bfd peers brief =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+Session count: 4
+SessionId  LocalAddress                             PeerAddress                             Status         
+=========  ============                             ===========                             ======         
+1827319320 fe80::42:62ff:fe8d:301                   fe80::42:9cff:fe00:3701                 up             
+3742364168 fe80::42:62ff:fe8d:300                   fe80::42:c6ff:feec:d301                 up             
+1421195440 0.0.0.0                                  10.1.2.2                                up             
+207323882  0.0.0.0                                  10.1.1.2                                up             
+
+===== leaf2# show bgp l2vpn evpn route type macip =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+No EVPN prefixes (of requested type) exist
+
+===== leaf2# show bgp l2vpn evpn route type multicast =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+BGP table version is 75, local router ID is 10.0.0.12
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal
+Origin codes: i - IGP, e - EGP, ? - incomplete
+EVPN type-1 prefix: [1]:[EthTag]:[ESI]:[IPlen]:[VTEP-IP]:[Frag-id]
+EVPN type-2 prefix: [2]:[EthTag]:[MAClen]:[MAC]:[IPlen]:[IP]
+EVPN type-3 prefix: [3]:[EthTag]:[IPlen]:[OrigIP]
+EVPN type-4 prefix: [4]:[ESI]:[IPlen]:[OrigIP]
+EVPN type-5 prefix: [5]:[EthTag]:[IPlen]:[IP]
+
+   Network          Next Hop            Metric LocPrf Weight Path
+                    Extended Community
+Route Distinguisher: 10.0.0.11:2
+*>i[3]:[0]:[32]:[10.0.0.11]
+                    10.0.0.11                0    100      0 i
+                    RT:65000:10010 ET:8
+* i[3]:[0]:[32]:[10.0.0.11]
+                    10.0.0.11                0    100      0 i
+                    RT:65000:10010 ET:8
+Route Distinguisher: 10.0.0.11:3
+*>i[3]:[0]:[32]:[10.0.0.11]
+                    10.0.0.11                0    100      0 i
+                    RT:65000:10020 ET:8
+* i[3]:[0]:[32]:[10.0.0.11]
+                    10.0.0.11                0    100      0 i
+                    RT:65000:10020 ET:8
+Route Distinguisher: 10.0.0.11:4
+*>i[3]:[0]:[32]:[10.0.0.11]
+                    10.0.0.11                0    100      0 i
+                    RT:65000:10030 ET:8
+* i[3]:[0]:[32]:[10.0.0.11]
+                    10.0.0.11                0    100      0 i
+                    RT:65000:10030 ET:8
+Route Distinguisher: 10.0.0.12:2
+*> [3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                          32768 i
+                    ET:8 RT:65000:10010
+Route Distinguisher: 10.0.0.12:3
+*> [3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                          32768 i
+                    ET:8 RT:65000:10020
+Route Distinguisher: 10.0.0.12:4
+*> [3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                          32768 i
+                    ET:8 RT:65000:10030
+Route Distinguisher: 10.0.0.13:2
+* i[3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                0    100      0 i
+                    RT:65000:10010 ET:8
+*>i[3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                0    100      0 i
+                    RT:65000:10010 ET:8
+Route Distinguisher: 10.0.0.13:3
+* i[3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                0    100      0 i
+                    RT:65000:10020 ET:8
+*>i[3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                0    100      0 i
+                    RT:65000:10020 ET:8
+Route Distinguisher: 10.0.0.13:4
+* i[3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                0    100      0 i
+                    RT:65000:10030 ET:8
+*>i[3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                0    100      0 i
+                    RT:65000:10030 ET:8
+Route Distinguisher: 10.0.0.14:2
+* i[3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                0    100      0 i
+                    RT:65000:10010 ET:8
+*>i[3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                0    100      0 i
+                    RT:65000:10010 ET:8
+Route Distinguisher: 10.0.0.14:3
+* i[3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                0    100      0 i
+                    RT:65000:10020 ET:8
+*>i[3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                0    100      0 i
+                    RT:65000:10020 ET:8
+Route Distinguisher: 10.0.0.14:4
+* i[3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                0    100      0 i
+                    RT:65000:10030 ET:8
+*>i[3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                0    100      0 i
+                    RT:65000:10030 ET:8
+
+Displayed 12 prefixes (21 paths) (of requested type)
+
+===== leaf2# SIDs SRv6 locales (ip -6 route | seg6local) =====
+
+fc00:0:12::e  encap seg6local action End dev sr0 metric 1024 pref medium
+fc00:0:12::d4  encap seg6local action End.DX4 nh4 10.0.0.12 dev sr0 metric 1024 pref medium
+
+===== leaf2# bridge fdb show (entradas VXLAN) =====
+
+8e:74:8f:12:cb:76 dev vxlan10010 vlan 1 master br10 permanent
+8e:74:8f:12:cb:76 dev vxlan10010 master br10 permanent
+00:00:00:00:00:00 dev vxlan10010 dst 10.0.0.14 self permanent
+00:00:00:00:00:00 dev vxlan10010 dst 10.0.0.13 self permanent
+00:00:00:00:00:00 dev vxlan10010 dst 10.0.0.11 self permanent
+32:fb:f8:80:f1:61 dev vxlan10020 vlan 1 master br20 permanent
+32:fb:f8:80:f1:61 dev vxlan10020 master br20 permanent
+00:00:00:00:00:00 dev vxlan10020 dst 10.0.0.14 self permanent
+00:00:00:00:00:00 dev vxlan10020 dst 10.0.0.13 self permanent
+00:00:00:00:00:00 dev vxlan10020 dst 10.0.0.11 self permanent
+42:fa:13:1a:28:0c dev vxlan10030 vlan 1 master br30 permanent
+42:fa:13:1a:28:0c dev vxlan10030 master br30 permanent
+00:00:00:00:00:00 dev vxlan10030 dst 10.0.0.14 self permanent
+00:00:00:00:00:00 dev vxlan10030 dst 10.0.0.13 self permanent
+00:00:00:00:00:00 dev vxlan10030 dst 10.0.0.11 self permanent
+
+===== leaf3# show ip ospf neighbor =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+
+Neighbor ID     Pri State           Up Time         Dead Time Address         Interface                        RXmtL RqstL DBsmL
+10.0.0.1          1 Full/-          14m40s             0.933s 10.1.1.4        eth0:10.1.1.5                        0     0     0
+10.0.0.2          1 Full/-          14m36s             0.933s 10.1.2.4        eth1:10.1.2.5                        0     0     0
+
+
+===== leaf3# show bgp l2vpn evpn summary =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+BGP router identifier 10.0.0.13, local AS number 65000 vrf-id 0
+BGP table version 0
+RIB entries 23, using 4416 bytes of memory
+Peers 2, using 1434 KiB of memory
+Peer groups 1, using 64 bytes of memory
+
+Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt Desc
+10.0.0.1        4      65000      1764      1659        0    0    0 00:54:24            9        3 N/A
+10.0.0.2        4      65000      1720      1623        0    0    0 00:14:31            9        3 N/A
+
+Total number of neighbors 2
+
+===== leaf3# show evpn vni =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+VNI        Type VxLAN IF              # MACs   # ARPs   # Remote VTEPs  Tenant VRF                           
+10010      L2   vxlan10010            0        0        3               default                              
+10030      L2   vxlan10030            0        0        3               default                              
+10020      L2   vxlan10020            0        0        3               default                              
+
+===== leaf3# show ipv6 ospf6 neighbor =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+Neighbor ID     Pri    DeadTime    State/IfState         Duration I/F[State]
+10.0.0.1          1    00:00:02     Full/PointToPoint    00:00:13 eth0[PointToPoint]
+10.0.0.2          1    00:00:02     Full/PointToPoint    00:00:18 eth1[PointToPoint]
+
+===== leaf3# show ipv6 route ospf6 =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+Codes: K - kernel route, C - connected, S - static, R - RIPng,
+       O - OSPFv3, I - IS-IS, B - BGP, N - NHRP, T - Table,
+       v - VNC, V - VNC-Direct, A - Babel, F - PBR,
+       f - OpenFabric,
+       > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+       t - trapped, o - offload failure
+
+O>* fc00:0:1::/48 [110/20] via fe80::42:c6ff:feec:d302, eth0, weight 1, 00:00:09
+O>* fc00:0:2::/48 [110/20] via fe80::42:9cff:fe00:3702, eth1, weight 1, 00:00:09
+O>* fc00:0:11::/48 [110/30] via fe80::42:9cff:fe00:3702, eth1, weight 1, 00:00:09
+  *                         via fe80::42:c6ff:feec:d302, eth0, weight 1, 00:00:09
+O>* fc00:0:12::/48 [110/30] via fe80::42:9cff:fe00:3702, eth1, weight 1, 00:00:09
+  *                         via fe80::42:c6ff:feec:d302, eth0, weight 1, 00:00:09
+O   fc00:0:13::/48 [110/10] is directly connected, sr0, weight 1, 00:00:09
+O>* fc00:0:14::/48 [110/30] via fe80::42:9cff:fe00:3702, eth1, weight 1, 00:00:09
+  *                         via fe80::42:c6ff:feec:d302, eth0, weight 1, 00:00:09
+
+===== leaf3# show bfd peers brief =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+Session count: 4
+SessionId  LocalAddress                             PeerAddress                             Status         
+=========  ============                             ===========                             ======         
+3396333694 0.0.0.0                                  10.1.1.4                                up             
+1164582842 fe80::42:bff:fe08:8601                   fe80::42:9cff:fe00:3702                 up             
+1914280866 0.0.0.0                                  10.1.2.4                                up             
+262347060  fe80::42:bff:fe08:8600                   fe80::42:c6ff:feec:d302                 up             
+
+===== leaf3# show bgp l2vpn evpn route type macip =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+No EVPN prefixes (of requested type) exist
+
+===== leaf3# show bgp l2vpn evpn route type multicast =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+BGP table version is 75, local router ID is 10.0.0.13
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal
+Origin codes: i - IGP, e - EGP, ? - incomplete
+EVPN type-1 prefix: [1]:[EthTag]:[ESI]:[IPlen]:[VTEP-IP]:[Frag-id]
+EVPN type-2 prefix: [2]:[EthTag]:[MAClen]:[MAC]:[IPlen]:[IP]
+EVPN type-3 prefix: [3]:[EthTag]:[IPlen]:[OrigIP]
+EVPN type-4 prefix: [4]:[ESI]:[IPlen]:[OrigIP]
+EVPN type-5 prefix: [5]:[EthTag]:[IPlen]:[IP]
+
+   Network          Next Hop            Metric LocPrf Weight Path
+                    Extended Community
+Route Distinguisher: 10.0.0.11:2
+* i[3]:[0]:[32]:[10.0.0.11]
+                    10.0.0.11                0    100      0 i
+                    RT:65000:10010 ET:8
+*>i[3]:[0]:[32]:[10.0.0.11]
+                    10.0.0.11                0    100      0 i
+                    RT:65000:10010 ET:8
+Route Distinguisher: 10.0.0.11:3
+* i[3]:[0]:[32]:[10.0.0.11]
+                    10.0.0.11                0    100      0 i
+                    RT:65000:10020 ET:8
+*>i[3]:[0]:[32]:[10.0.0.11]
+                    10.0.0.11                0    100      0 i
+                    RT:65000:10020 ET:8
+Route Distinguisher: 10.0.0.11:4
+* i[3]:[0]:[32]:[10.0.0.11]
+                    10.0.0.11                0    100      0 i
+                    RT:65000:10030 ET:8
+*>i[3]:[0]:[32]:[10.0.0.11]
+                    10.0.0.11                0    100      0 i
+                    RT:65000:10030 ET:8
+Route Distinguisher: 10.0.0.12:2
+* i[3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                0    100      0 i
+                    RT:65000:10010 ET:8
+*>i[3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                0    100      0 i
+                    RT:65000:10010 ET:8
+Route Distinguisher: 10.0.0.12:3
+* i[3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                0    100      0 i
+                    RT:65000:10020 ET:8
+*>i[3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                0    100      0 i
+                    RT:65000:10020 ET:8
+Route Distinguisher: 10.0.0.12:4
+* i[3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                0    100      0 i
+                    RT:65000:10030 ET:8
+*>i[3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                0    100      0 i
+                    RT:65000:10030 ET:8
+Route Distinguisher: 10.0.0.13:2
+*> [3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                          32768 i
+                    ET:8 RT:65000:10010
+Route Distinguisher: 10.0.0.13:3
+*> [3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                          32768 i
+                    ET:8 RT:65000:10020
+Route Distinguisher: 10.0.0.13:4
+*> [3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                          32768 i
+                    ET:8 RT:65000:10030
+Route Distinguisher: 10.0.0.14:2
+* i[3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                0    100      0 i
+                    RT:65000:10010 ET:8
+*>i[3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                0    100      0 i
+                    RT:65000:10010 ET:8
+Route Distinguisher: 10.0.0.14:3
+* i[3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                0    100      0 i
+                    RT:65000:10020 ET:8
+*>i[3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                0    100      0 i
+                    RT:65000:10020 ET:8
+Route Distinguisher: 10.0.0.14:4
+* i[3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                0    100      0 i
+                    RT:65000:10030 ET:8
+*>i[3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                0    100      0 i
+                    RT:65000:10030 ET:8
+
+Displayed 12 prefixes (21 paths) (of requested type)
+
+===== leaf3# SIDs SRv6 locales (ip -6 route | seg6local) =====
+
+fc00:0:13::e  encap seg6local action End dev sr0 metric 1024 pref medium
+fc00:0:13::d4  encap seg6local action End.DX4 nh4 10.0.0.13 dev sr0 metric 1024 pref medium
+
+===== leaf3# bridge fdb show (entradas VXLAN) =====
+
+fe:9c:f3:2d:2c:30 dev vxlan10010 vlan 1 master br10 permanent
+fe:9c:f3:2d:2c:30 dev vxlan10010 master br10 permanent
+00:00:00:00:00:00 dev vxlan10010 dst 10.0.0.12 self permanent
+00:00:00:00:00:00 dev vxlan10010 dst 10.0.0.14 self permanent
+00:00:00:00:00:00 dev vxlan10010 dst 10.0.0.11 self permanent
+36:1f:3b:f8:36:d9 dev vxlan10020 vlan 1 master br20 permanent
+36:1f:3b:f8:36:d9 dev vxlan10020 master br20 permanent
+00:00:00:00:00:00 dev vxlan10020 dst 10.0.0.12 self permanent
+00:00:00:00:00:00 dev vxlan10020 dst 10.0.0.14 self permanent
+00:00:00:00:00:00 dev vxlan10020 dst 10.0.0.11 self permanent
+46:cb:0d:52:30:3d dev vxlan10030 vlan 1 master br30 permanent
+46:cb:0d:52:30:3d dev vxlan10030 master br30 permanent
+00:00:00:00:00:00 dev vxlan10030 dst 10.0.0.12 self permanent
+00:00:00:00:00:00 dev vxlan10030 dst 10.0.0.14 self permanent
+00:00:00:00:00:00 dev vxlan10030 dst 10.0.0.11 self permanent
+
+===== leaf4# show ip ospf neighbor =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+
+Neighbor ID     Pri State           Up Time         Dead Time Address         Interface                        RXmtL RqstL DBsmL
+10.0.0.1          1 Full/-          54m25s             0.950s 10.1.1.6        eth0:10.1.1.7                        0     0     0
+10.0.0.2          1 Full/-          52m21s             0.950s 10.1.2.6        eth1:10.1.2.7                        0     0     0
+
+
+===== leaf4# show bgp l2vpn evpn summary =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+BGP router identifier 10.0.0.14, local AS number 65000 vrf-id 0
+BGP table version 0
+RIB entries 23, using 4416 bytes of memory
+Peers 2, using 1434 KiB of memory
+Peer groups 1, using 64 bytes of memory
+
+Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt Desc
+10.0.0.1        4      65000      1781      1666        0    0    0 00:54:26            9        3 N/A
+10.0.0.2        4      65000      1739      1622        0    0    0 00:52:21            9        3 N/A
+
+Total number of neighbors 2
+
+===== leaf4# show evpn vni =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+VNI        Type VxLAN IF              # MACs   # ARPs   # Remote VTEPs  Tenant VRF                           
+10010      L2   vxlan10010            0        0        3               default                              
+10030      L2   vxlan10030            0        0        3               default                              
+10020      L2   vxlan10020            0        0        3               default                              
+
+===== leaf4# show ipv6 ospf6 neighbor =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+Neighbor ID     Pri    DeadTime    State/IfState         Duration I/F[State]
+10.0.0.1          1    00:00:02     Full/PointToPoint    00:00:10 eth0[PointToPoint]
+10.0.0.2          1    00:00:02     Full/PointToPoint    00:00:20 eth1[PointToPoint]
+
+===== leaf4# show ipv6 route ospf6 =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+Codes: K - kernel route, C - connected, S - static, R - RIPng,
+       O - OSPFv3, I - IS-IS, B - BGP, N - NHRP, T - Table,
+       v - VNC, V - VNC-Direct, A - Babel, F - PBR,
+       f - OpenFabric,
+       > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+       t - trapped, o - offload failure
+
+O>* fc00:0:1::/48 [110/20] via fe80::42:c6ff:feec:d303, eth0, weight 1, 00:00:06
+O>* fc00:0:2::/48 [110/20] via fe80::42:9cff:fe00:3703, eth1, weight 1, 00:00:06
+O>* fc00:0:11::/48 [110/30] via fe80::42:9cff:fe00:3703, eth1, weight 1, 00:00:06
+  *                         via fe80::42:c6ff:feec:d303, eth0, weight 1, 00:00:06
+O>* fc00:0:12::/48 [110/30] via fe80::42:9cff:fe00:3703, eth1, weight 1, 00:00:06
+  *                         via fe80::42:c6ff:feec:d303, eth0, weight 1, 00:00:06
+O>* fc00:0:13::/48 [110/30] via fe80::42:9cff:fe00:3703, eth1, weight 1, 00:00:06
+  *                         via fe80::42:c6ff:feec:d303, eth0, weight 1, 00:00:06
+O   fc00:0:14::/48 [110/10] is directly connected, sr0, weight 1, 00:00:06
+
+===== leaf4# show bfd peers brief =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+Session count: 4
+SessionId  LocalAddress                             PeerAddress                             Status         
+=========  ============                             ===========                             ======         
+1623559065 0.0.0.0                                  10.1.2.6                                up             
+138999004  0.0.0.0                                  10.1.1.6                                up             
+4022101644 fe80::42:71ff:fec6:4d01                  fe80::42:9cff:fe00:3703                 up             
+4223520879 fe80::42:71ff:fec6:4d00                  fe80::42:c6ff:feec:d303                 up             
+
+===== leaf4# show bgp l2vpn evpn route type macip =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+No EVPN prefixes (of requested type) exist
+
+===== leaf4# show bgp l2vpn evpn route type multicast =====
+
+% Can't open configuration file /etc/frr/vtysh.conf due to 'No such file or directory'.
+BGP table version is 75, local router ID is 10.0.0.14
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal
+Origin codes: i - IGP, e - EGP, ? - incomplete
+EVPN type-1 prefix: [1]:[EthTag]:[ESI]:[IPlen]:[VTEP-IP]:[Frag-id]
+EVPN type-2 prefix: [2]:[EthTag]:[MAClen]:[MAC]:[IPlen]:[IP]
+EVPN type-3 prefix: [3]:[EthTag]:[IPlen]:[OrigIP]
+EVPN type-4 prefix: [4]:[ESI]:[IPlen]:[OrigIP]
+EVPN type-5 prefix: [5]:[EthTag]:[IPlen]:[IP]
+
+   Network          Next Hop            Metric LocPrf Weight Path
+                    Extended Community
+Route Distinguisher: 10.0.0.11:2
+*>i[3]:[0]:[32]:[10.0.0.11]
+                    10.0.0.11                0    100      0 i
+                    RT:65000:10010 ET:8
+* i[3]:[0]:[32]:[10.0.0.11]
+                    10.0.0.11                0    100      0 i
+                    RT:65000:10010 ET:8
+Route Distinguisher: 10.0.0.11:3
+*>i[3]:[0]:[32]:[10.0.0.11]
+                    10.0.0.11                0    100      0 i
+                    RT:65000:10020 ET:8
+* i[3]:[0]:[32]:[10.0.0.11]
+                    10.0.0.11                0    100      0 i
+                    RT:65000:10020 ET:8
+Route Distinguisher: 10.0.0.11:4
+*>i[3]:[0]:[32]:[10.0.0.11]
+                    10.0.0.11                0    100      0 i
+                    RT:65000:10030 ET:8
+* i[3]:[0]:[32]:[10.0.0.11]
+                    10.0.0.11                0    100      0 i
+                    RT:65000:10030 ET:8
+Route Distinguisher: 10.0.0.12:2
+* i[3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                0    100      0 i
+                    RT:65000:10010 ET:8
+*>i[3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                0    100      0 i
+                    RT:65000:10010 ET:8
+Route Distinguisher: 10.0.0.12:3
+* i[3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                0    100      0 i
+                    RT:65000:10020 ET:8
+*>i[3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                0    100      0 i
+                    RT:65000:10020 ET:8
+Route Distinguisher: 10.0.0.12:4
+* i[3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                0    100      0 i
+                    RT:65000:10030 ET:8
+*>i[3]:[0]:[32]:[10.0.0.12]
+                    10.0.0.12                0    100      0 i
+                    RT:65000:10030 ET:8
+Route Distinguisher: 10.0.0.13:2
+* i[3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                0    100      0 i
+                    RT:65000:10010 ET:8
+*>i[3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                0    100      0 i
+                    RT:65000:10010 ET:8
+Route Distinguisher: 10.0.0.13:3
+* i[3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                0    100      0 i
+                    RT:65000:10020 ET:8
+*>i[3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                0    100      0 i
+                    RT:65000:10020 ET:8
+Route Distinguisher: 10.0.0.13:4
+* i[3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                0    100      0 i
+                    RT:65000:10030 ET:8
+*>i[3]:[0]:[32]:[10.0.0.13]
+                    10.0.0.13                0    100      0 i
+                    RT:65000:10030 ET:8
+Route Distinguisher: 10.0.0.14:2
+*> [3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                          32768 i
+                    ET:8 RT:65000:10010
+Route Distinguisher: 10.0.0.14:3
+*> [3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                          32768 i
+                    ET:8 RT:65000:10020
+Route Distinguisher: 10.0.0.14:4
+*> [3]:[0]:[32]:[10.0.0.14]
+                    10.0.0.14                          32768 i
+                    ET:8 RT:65000:10030
+
+Displayed 12 prefixes (21 paths) (of requested type)
+
+===== leaf4# SIDs SRv6 locales (ip -6 route | seg6local) =====
+
+fc00:0:14::e  encap seg6local action End dev sr0 metric 1024 pref medium
+fc00:0:14::d4  encap seg6local action End.DX4 nh4 10.0.0.14 dev sr0 metric 1024 pref medium
+
+===== leaf4# bridge fdb show (entradas VXLAN) =====
+
+06:06:ec:9f:4b:9f dev vxlan10010 vlan 1 master br10 permanent
+06:06:ec:9f:4b:9f dev vxlan10010 master br10 permanent
+00:00:00:00:00:00 dev vxlan10010 dst 10.0.0.12 self permanent
+00:00:00:00:00:00 dev vxlan10010 dst 10.0.0.13 self permanent
+00:00:00:00:00:00 dev vxlan10010 dst 10.0.0.11 self permanent
+1e:b7:11:b9:d4:e5 dev vxlan10020 vlan 1 master br20 permanent
+1e:b7:11:b9:d4:e5 dev vxlan10020 master br20 permanent
+00:00:00:00:00:00 dev vxlan10020 dst 10.0.0.12 self permanent
+00:00:00:00:00:00 dev vxlan10020 dst 10.0.0.13 self permanent
+00:00:00:00:00:00 dev vxlan10020 dst 10.0.0.11 self permanent
+32:81:ed:6c:69:40 dev vxlan10030 vlan 1 master br30 permanent
+32:81:ed:6c:69:40 dev vxlan10030 master br30 permanent
+00:00:00:00:00:00 dev vxlan10030 dst 10.0.0.12 self permanent
+00:00:00:00:00:00 dev vxlan10030 dst 10.0.0.13 self permanent
+00:00:00:00:00:00 dev vxlan10030 dst 10.0.0.11 self permanent
+
+===== host1: ping 10.10.0.13  [VLAN10 DC1 -> Planta (L2 extendida)] =====
+
+PING 10.10.0.13 (10.10.0.13) 56(84) bytes of data.
+64 bytes from 10.10.0.13: icmp_seq=1 ttl=64 time=1.02 ms
+64 bytes from 10.10.0.13: icmp_seq=2 ttl=64 time=1.34 ms
+64 bytes from 10.10.0.13: icmp_seq=3 ttl=64 time=1.03 ms
+64 bytes from 10.10.0.13: icmp_seq=4 ttl=64 time=0.849 ms
+
+--- 10.10.0.13 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3013ms
+rtt min/avg/max/mdev = 0.849/1.058/1.339/0.176 ms
+
+===== host2: ping 10.20.0.14  [VLAN20 DC1 -> Planta (L2 extendida)] =====
+
+PING 10.20.0.14 (10.20.0.14) 56(84) bytes of data.
+64 bytes from 10.20.0.14: icmp_seq=1 ttl=64 time=2.61 ms
+64 bytes from 10.20.0.14: icmp_seq=2 ttl=64 time=0.758 ms
+64 bytes from 10.20.0.14: icmp_seq=3 ttl=64 time=0.571 ms
+64 bytes from 10.20.0.14: icmp_seq=4 ttl=64 time=1.03 ms
+
+--- 10.20.0.14 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3082ms
+rtt min/avg/max/mdev = 0.571/1.242/2.612/0.807 ms
+
+===== host3: ping 10.10.0.11  [VLAN10 Planta -> DC1] =====
+
+PING 10.10.0.11 (10.10.0.11) 56(84) bytes of data.
+64 bytes from 10.10.0.11: icmp_seq=1 ttl=64 time=0.841 ms
+64 bytes from 10.10.0.11: icmp_seq=2 ttl=64 time=0.805 ms
+64 bytes from 10.10.0.11: icmp_seq=3 ttl=64 time=0.671 ms
+64 bytes from 10.10.0.11: icmp_seq=4 ttl=64 time=0.797 ms
+
+--- 10.10.0.11 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3093ms
+rtt min/avg/max/mdev = 0.671/0.778/0.841/0.064 ms
+
+===== host4: ping 10.20.0.12  [VLAN20 Planta -> DC1] =====
+
+PING 10.20.0.12 (10.20.0.12) 56(84) bytes of data.
+64 bytes from 10.20.0.12: icmp_seq=1 ttl=64 time=0.765 ms
+64 bytes from 10.20.0.12: icmp_seq=2 ttl=64 time=0.395 ms
+64 bytes from 10.20.0.12: icmp_seq=3 ttl=64 time=0.582 ms
+64 bytes from 10.20.0.12: icmp_seq=4 ttl=64 time=0.771 ms
+
+--- 10.20.0.12 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3081ms
+rtt min/avg/max/mdev = 0.395/0.628/0.771/0.154 ms

@@ -1,0 +1,52 @@
+# Prueba Zero Trust / microsegmentacion - 2026-10-22 01:11:16
+Segmento de servicios OT 10.50.0.0/24 con firewall distribuido (nft tabla zt). Matriz: app->db:5432.
+
+===== 1) Acceso AUTORIZADO: srv1 (app, 10.50.0.11) -> dbsrv:5432 =====
+  5432/tcp  CONECTADO: GSM-Cloud DB (laboratorio) - acceso restringido por microseg
+
+===== 2) ATAQUE: port scan desde pc-corp (comprometido, 10.50.0.30) -> dbsrv =====
+Puertos escaneados: 22 80 443 3306 5432 6379 8080 9100 27017
+  22/tcp  filtrado (bloqueado)
+  80/tcp  filtrado (bloqueado)
+  443/tcp  filtrado (bloqueado)
+  3306/tcp  filtrado (bloqueado)
+  5432/tcp  filtrado (bloqueado)
+  6379/tcp  filtrado (bloqueado)
+  8080/tcp  filtrado (bloqueado)
+  9100/tcp  filtrado (bloqueado)
+  27017/tcp  filtrado (bloqueado)
+RESULTADO escaneo: 0 puertos abiertos de 9 (microsegmentacion OK: todo bloqueado)
+
+===== 3) ATAQUE: movimiento lateral pc-corp -> srv1:8080 (aplicacion) =====
+  8080/tcp  bloqueado (OK): TimeoutError
+
+===== 4) Contadores de la microsegmentacion en dbsrv (intentos bloqueados por origen) =====
+table inet zt {
+	counter ztdrop_db_from_app {
+		packets 0 bytes 0
+	}
+	counter ztdrop_db_from_lb {
+		packets 0 bytes 0
+	}
+	counter ztdrop_db_from_corp {
+		packets 7 bytes 420
+	}
+}
+
+===== 5) Deteccion y mitigacion automatica del SIEM (telemetria gRPC) =====
+2026-10-22 01:11:20 ALERTA port scan / movimiento lateral: 6 intentos corp->dbsrv bloqueados en 10s (atacante 10.50.0.30)
+2026-10-22 01:11:21 MITIGACION: 10.50.0.30 agregado al conjunto bloqueados de dbsrv (timeout 10m)
+
+pc-corp en el conjunto bloqueados de dbsrv tras la mitigacion:
+table inet zt {
+	set bloqueados {
+		type ipv4_addr
+		flags timeout
+		elements = { 10.50.0.30 timeout 10m expires 9m49s249ms }
+	}
+}
+
+===== 6) Mitigacion quirurgica: el usuario corporativo legitimo -> balanceador (10.50.0.100:80) sigue OK =====
+  lb:80  CONECTADO (el bloqueo es solo hacia el DB, no afecta el trafico autorizado)
+
+Evidencia: /home/gns3/netcloud-secure/evidence/zerotrust_20261022_011113.txt

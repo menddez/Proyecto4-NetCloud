@@ -1,0 +1,8 @@
+2026-10-22 01:11:01 servidor gRPC escuchando en :50051
+2026-10-22 01:11:01 SIEM activo: port scan >= 6 bloqueos en 10s; DDoS 5G NGAP > 2000 en 5s
+2026-10-22 01:11:20 ALERTA port scan / movimiento lateral: 6 intentos corp->dbsrv bloqueados en 10s (atacante 10.50.0.30)
+2026-10-22 01:11:21 MITIGACION: 10.50.0.30 agregado al conjunto bloqueados de dbsrv (timeout 10m)
+2026-10-22 01:12:51 SIEM activo: port scan >= 6 bloqueos en 10s; DDoS 5G NGAP > 200 en 5s
+2026-10-22 01:12:51 servidor gRPC escuchando en :50051
+2026-10-22 01:13:06 ALERTA DDoS de senalizacion 5G: 35416 peticiones de conexion (NGAP) en 5s (35371 ya descartadas por el limitador del nucleo)
+2026-10-22 01:13:06 MITIGACION: el limitador nft del nucleo descarta el exceso de NGAP nuevos y el AMF rechaza las IMSIs no provisionadas; las sesiones establecidas de los robots se conservan intactas.

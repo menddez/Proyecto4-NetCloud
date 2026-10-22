@@ -1,0 +1,28 @@
+# Prometheus - raspa los exportadores stdlib de los nodos (Entrega 3). Corre en la GNS3 VM (--network host).
+global:
+  scrape_interval: 2s
+  evaluation_interval: 5s
+
+scrape_configs:
+  - job_name: fabric
+    static_configs:
+      - {targets: ['192.168.122.21:9100'], labels: {node: leaf1, rol: leaf}}
+      - {targets: ['192.168.122.22:9100'], labels: {node: leaf2, rol: leaf}}
+      - {targets: ['192.168.122.23:9100'], labels: {node: leaf3, rol: leaf}}
+      - {targets: ['192.168.122.24:9100'], labels: {node: leaf4, rol: leaf}}
+  - job_name: nfv
+    static_configs:
+      - {targets: ['192.168.122.51:9100'], labels: {node: fw1, rol: firewall}}
+      - {targets: ['192.168.122.52:9100'], labels: {node: fw2, rol: firewall}}
+  - job_name: zerotrust
+    static_configs:
+      - {targets: ['192.168.122.71:9100'], labels: {node: dbsrv, rol: db}}
+  - job_name: '5g'
+    static_configs:
+      - {targets: ['192.168.122.41:9100'], labels: {node: core5g, rol: core5g}}
+  - job_name: f5g
+    static_configs:
+      - {targets: ['192.168.122.61:9100'], labels: {node: olt, rol: olt}}
+  - job_name: prometheus
+    static_configs:
+      - {targets: ['localhost:9090']}

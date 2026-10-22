@@ -1,0 +1,28 @@
+#!/usr/sbin/nft -f
+# Microsegmentacion Zero Trust de {{ name }} (rol {{ tag }}) - generado por deploy.py desde topology.yaml
+# Firewall distribuido por host: default-deny este-oeste dentro del segmento de servicios OT ({{ zt.red }}).
+# Solo se aceptan los flujos rol->rol de la matriz 'permitir'; el resto se cuenta por origen y se descarta
+# (esas cuentas alimentan al SIEM para detectar port scanning y movimiento lateral).
+table inet zt {
+  set bloqueados { type ipv4_addr; flags timeout; }   # el SIEM agrega aqui a los atacantes mitigados
+{% for rol, ips in zt.roles.items() %}
+  set role_{{ rol }} { type ipv4_addr; {% if ips %}elements = { {{ ips|join(', ') }} }{% endif %} }
+{% endfor %}
+{% for rol in zt.roles if rol != tag %}
+  counter ztdrop_{{ tag }}_from_{{ rol }} {}
+{% endfor %}
+
+  chain input {
+    type filter hook input priority 0; policy accept;
+    iif lo accept
+    ct state established,related accept
+    ip saddr 192.168.122.0/24 accept                  # plano de gestion (SSH/Netmiko) siempre permitido
+    ip saddr @bloqueados counter drop                 # identidades mitigadas por el SIEM
+{% for r in zt.permitir if r.dst == tag %}
+    ip saddr @role_{{ r.src }} tcp dport { {{ r.puertos|join(', ') }} } ct state new accept   # {{ r.src }} -> {{ tag }} autorizado
+{% endfor %}
+{% for rol in zt.roles if rol != tag %}
+    ip saddr @role_{{ rol }} ct state new counter name ztdrop_{{ tag }}_from_{{ rol }} drop   # {{ rol }} -> {{ tag }} NO autorizado
+{% endfor %}
+  }
+}

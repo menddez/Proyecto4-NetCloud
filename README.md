@@ -1,4 +1,4 @@
-# NETCLOUD-SECURE 5G/F5G – Entregas 1 y 2
+# NETCLOUD-SECURE 5G/F5G – Entregas 1, 2 y 3
 Tejido spine-leaf **OSPFv2/OSPFv3 + BFD (underlay) + BGP EVPN/VXLAN (overlay)** con FRRouting en GNS3,
 **Segment Routing SRv6** en el kernel Linux y un **controlador SDN/IBN** propio que traduce intenciones
 en políticas SRv6. Todo automatizado con **Python + Netmiko + Jinja2**.
@@ -13,6 +13,22 @@ en políticas SRv6. Todo automatizado con **Python + Netmiko + Jinja2**.
 | SRv6: VXLAN OT (VNI 10020) dirigido por spine2 | Capturado con SRH (`segleft` 1→0); el otro spine no ve el flujo | `ibn_20261021_172552.txt` |
 | Falla del spine de la intención | Protección local: 0.8 s de pérdida; controlador reoptimiza en ~11 s sin pérdida adicional | mismo archivo |
 | Alta automática de servicio (VLAN 30 → VNI 10030) | 1 llamada a la API; rutas EVPN tipo 3 en los 4 VTEPs | `servicio_*.txt` |
+
+## Entrega 3: Zero Trust, telemetría gRPC, SIEM y ataques (2026-10-22)
+Microsegmentación Zero Trust (firewall distribuido nftables por identidad) en el segmento de servicios OT,
+telemetría en streaming con **Prometheus + Grafana** (exportadores stdlib en los nodos), un **SIEM gRPC** que
+correlaciona y mitiga, y las pruebas de ataque del PDF (port scan, movimiento lateral y DDoS al núcleo 5G).
+Guía y evidencias: [`DEFENSA3.md`](DEFENSA3.md); diseño: `docs/superpowers/specs/2026-10-21-entrega3-design.md`.
+
+| Prueba | Resultado | Evidencia |
+|---|---|---|
+| Port scan equipo comprometido → BD (§6) | 0/9 puertos abiertos; app→db:5432 autorizado sí | `zerotrust_*.txt` |
+| Movimiento lateral / exfiltración (§7) | bloqueado; mitigación quirúrgica (corp→lb sigue OK) | `zerotrust_*.txt` |
+| SIEM (telemetría gRPC) | detección <2 s y bloqueo automático del atacante | `siem.log` |
+| DDoS de IoT falsos al núcleo 5G (§7) | 35 416 NGAP en 5 s, 35 371 descartados; robot legítimo 600/600, 5 ms | `ddos5g_*.txt` |
+| Telemetría Prometheus/Grafana | 10/10 exportadores UP, tablero en vivo | Grafana :3000 |
+
+Acceso: Grafana `http://192.168.56.102:3000` (tablero *NetCloud-Secure*), Prometheus `:9090`.
 
 ## Entrega 2: 5G privado, NFV y F5G (2026-10-21)
 Sobre el mismo fabric: núcleo **Open5GS** + gNodeB/UEs **UERANSIM** (N2/N3 por EVPN VNI 10030), cadena de servicios
@@ -36,6 +52,9 @@ y re-instancia, y una **red óptica F5G simulada** (OLT, splitter, 3 ONT) con **
 | `topology/topology.yaml` | Fuente única de verdad (direccionamiento, VNIs) |
 | `docker/` | Imágenes `gsm-frr`, `gsm-5gc` (Open5GS), `gsm-ran` (UERANSIM) y `gsm-vnf` (nftables, HAProxy, OLT/ONT); `start.sh` común |
 | `templates/5g`, `templates/nfv`, `templates/f5g` | Plantillas de la Entrega 2 (núcleo, gNB/UE, firewall, balanceador, DBA) |
+| `templates/seg`, `templates/telemetria` | Entrega 3: microsegmentación nft, servidor BD, exportador de telemetría |
+| `monitoreo/` | Config de Prometheus y tableros de Grafana (Entrega 3) |
+| `automation/siem.py`, `siem.proto` | SIEM gRPC (servidor + shipper), correlación y mitigación |
 | `automation/orquestador_nfv.py`, `prueba_f5g.py` | Orquestador NFV y prueba de throughput F5G; `test_dba.py`, `test_nfv.py` |
 | `gns3/` | `netcloud.gns3` (topología), `crear_topologia_gns3.py` (Entrega 1) y `agregar_entrega2.py` (agrega 5G/NFV/F5G) vía API REST |
 | `scripts/arranque.sh` | Arranque diario dentro de la GNS3 VM (red de gestión + despliegue) |
@@ -43,6 +62,7 @@ y re-instancia, y una **red óptica F5G simulada** (OLT, splitter, 3 ONT) con **
 | `scripts/levantar_lab.ps1` | **Desde Windows**: levanta GNS3, la VM, el proyecto, la configuración y el controlador en un paso |
 | `DEFENSA.md` | Guía de la demostración en vivo y lista de evidencias |
 | `scripts/prueba_5g.sh`, `prueba_nfv.sh`, `orquestador.sh`, `estado_5g.sh` | Evidencias 5G/SFC, falla NFV, orquestador y resumen (Entrega 2) |
+| `scripts/monitoreo.sh`, `siem.sh`, `prueba_zerotrust.sh`, `prueba_ddos5g.sh` | Monitoreo, SIEM y ataques controlados (Entrega 3) |
 | `scripts/prueba_ibn.sh` | Demostración completa SRv6 + IBN + falla de spine (para la defensa) |
 | `evidence/` | Salidas de verificación, reconvergencia, IBN, bitácora del controlador y `capturas/*.pcap` (Wireshark) |
 

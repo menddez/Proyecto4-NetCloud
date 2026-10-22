@@ -1,0 +1,41 @@
+# Latencia 5G extremo a extremo y cadena de servicios (SFC) - 2026-10-21 23:45:28
+Camino: UE -> gNodeB -> GTP-U por EVPN (VNI 10030) -> UPF -> N6 (VNI 10040) -> vFW fw1 -> servicios OT (VNI 10050)
+
+===== Latencia de cada UE IoT hacia srv1 (20 pings, objetivo < 10 ms) =====
+UE                   interfaz   IP           RTT prom (ms)  veredicto
+ue-robot-ensamble    uesimtun1  10.45.0.3    5.287          CUMPLE
+ue-robot-soldadura   uesimtun0  10.45.0.2    5.158          CUMPLE
+ue-sensor-plc        uesimtun2  10.45.0.4    4.152          CUMPLE
+
+===== SFC: 6 peticiones de telemetria de un robot al servicio publicado por el balanceador =====
+{"servidor": "srv1", "ruta": "/telemetria", "cliente": "10.50.0.4", "hora": "23:45:40"}
+{"servidor": "srv2", "ruta": "/telemetria", "cliente": "10.50.0.4", "hora": "23:45:40"}
+{"servidor": "srv1", "ruta": "/telemetria", "cliente": "10.50.0.4", "hora": "23:45:40"}
+{"servidor": "srv2", "ruta": "/telemetria", "cliente": "10.50.0.4", "hora": "23:45:40"}
+{"servidor": "srv1", "ruta": "/telemetria", "cliente": "10.50.0.4", "hora": "23:45:40"}
+{"servidor": "srv2", "ruta": "/telemetria", "cliente": "10.50.0.4", "hora": "23:45:40"}
+
+===== Politica del firewall: la tablet administrativa (DNN admin) no puede llegar a OT =====
+BLOQUEADO por el vFW (timeout)
+
+===== Contadores nftables del firewall activo (fw1) =====
+table inet sfc {
+	counter iot_a_servicios {
+		packets 6 bytes 360
+	}
+	counter iot_icmp {
+		packets 3 bytes 252
+	}
+	counter admin_bloqueado {
+		packets 3 bytes 180
+	}
+	counter otros_bloqueados {
+		packets 0 bytes 0
+	}
+}
+
+===== Balanceador (HAProxy): estado de los servidores y sesiones atendidas =====
+# pxname svname status sesiones=stot
+servidores_industriales srv1 UP sesiones=3
+servidores_industriales srv2 UP sesiones=3
+servidores_industriales BACKEND UP sesiones=6

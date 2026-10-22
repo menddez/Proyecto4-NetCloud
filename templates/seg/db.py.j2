@@ -1,0 +1,27 @@
+"""Servidor de base de datos critica simulado ({{ name }}): abre los puertos tipicos de BD y responde un
+banner minimo. Lo relevante para la microsegmentacion es que ESCUCHA en esos puertos; el acceso lo controla
+la tabla nft 'zt' (solo el rol 'app' llega al 5432)."""
+import socket
+import threading
+
+PUERTOS = {{ zt.db_puertos }}
+BANNER = b"GSM-Cloud DB (laboratorio) - acceso restringido por microsegmentacion Zero Trust\n"
+
+
+def servir(puerto):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    s.bind(("0.0.0.0", puerto))
+    s.listen(16)
+    while True:
+        try:
+            c, _ = s.accept()
+            c.sendall(BANNER)
+            c.close()
+        except OSError:
+            pass
+
+
+for p in PUERTOS:
+    threading.Thread(target=servir, args=(p,), daemon=True).start()
+threading.Event().wait()

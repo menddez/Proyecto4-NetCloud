@@ -36,13 +36,16 @@ servicios:                    # equipos de la Entrega 2: gestion y rol (define s
   ue:     {mgmt: 192.168.122.43, role: ue}
   fw1:    {mgmt: 192.168.122.51, role: fw, outside: 10.40.0.2, inside: 10.50.0.2, activo: true}
   fw2:    {mgmt: 192.168.122.52, role: fw, outside: 10.40.0.3, inside: 10.50.0.3, activo: false}
-  lb:     {mgmt: 192.168.122.53, role: lb, ip: 10.50.0.4}
-  srv1:   {mgmt: 192.168.122.54, role: srv, ip: 10.50.0.11}
-  srv2:   {mgmt: 192.168.122.55, role: srv, ip: 10.50.0.12}
+  lb:     {mgmt: 192.168.122.53, role: lb, ip: 10.50.0.4, tag: lb}
+  srv1:   {mgmt: 192.168.122.54, role: srv, ip: 10.50.0.11, tag: app}
+  srv2:   {mgmt: 192.168.122.55, role: srv, ip: 10.50.0.12, tag: app}
   olt:    {mgmt: 192.168.122.61, role: olt}
   ont1:   {mgmt: 192.168.122.62, role: ont}
   ont2:   {mgmt: 192.168.122.63, role: ont}
   ont3:   {mgmt: 192.168.122.64, role: ont}
+  # Entrega 3: Zero Trust (segmento de servicios OT, VNI 10050)
+  dbsrv:   {mgmt: 192.168.122.71, role: db,   ip: 10.50.0.20, tag: db}
+  pc-corp: {mgmt: 192.168.122.72, role: corp, ip: 10.50.0.30, tag: corp}
 
 nucleo5g:
   plmn: {mcc: "001", mnc: "01"}
@@ -81,3 +84,31 @@ f5g:                          # red optica simulada (escala 1:12 de GPON 1.244 G
     ont1: {ip: 10.61.0.11, servicio: Oficinas,              tcont: 4, asegurado: 0,  maximo: 100, peso: 1}
     ont2: {ip: 10.61.0.12, servicio: ERP-Corporativo,       tcont: 2, asegurado: 30, maximo: 100, peso: 1}
     ont3: {ip: 10.61.0.13, servicio: Camaras-Videoanalitica, tcont: 3, asegurado: 20, maximo: 60, peso: 2}
+
+# ---------------------------------------------------------------- Entrega 3: Zero Trust, telemetria, SIEM
+zerotrust:
+  red: 10.50.0.0/24            # segmento de servicios OT donde se aplica la microsegmentacion
+  # roles -> IPs (tags de identidad). app = servidores detras del balanceador; db = base de datos critica
+  roles:
+    db:   [10.50.0.20]
+    app:  [10.50.0.11, 10.50.0.12]
+    lb:   [10.50.0.4, 10.50.0.100]
+    corp: [10.50.0.30]
+  db_puertos: [5432, 3306, 6379, 27017]   # puertos que escucha dbsrv (PostgreSQL, MySQL, Redis, Mongo)
+  # matriz de permitidos este-oeste (origen_rol -> destino_rol: puertos). El resto: drop + log
+  permitir:
+    - {src: app,  dst: db,  puertos: [5432]}        # solo la app autorizada llega al DB
+    - {src: lb,   dst: app, puertos: [8080]}        # el balanceador a los servidores de aplicacion
+    - {src: corp, dst: lb,  puertos: [80]}          # usuario corporativo al servicio publicado
+
+telemetria:
+  exporter_port: 9100
+  events_port: 9101
+  siem_grpc: "192.168.122.1:50051"   # el SIEM corre en el plano de gestion (GNS3 VM, gateway virbr0)
+  scrape_s: 2
+  # nodos con exportador stdlib (metricas + eventos de seguridad)
+  nodos: [fw1, fw2, core5g, olt, dbsrv, leaf1, leaf2, leaf3, leaf4]
+  # correlacion del SIEM
+  portscan_umbral: 6          # >= puertos denegados distintos desde un origen...
+  portscan_ventana_s: 10      # ...en esta ventana -> alerta de port scan + mitigacion
+  ddos_umbral_pps: 40         # paquetes/s bogus al nucleo 5G -> alerta DDoS + bloqueo del origen

@@ -1,0 +1,21 @@
+#!/usr/sbin/nft -f
+# Tabla de seguridad del nucleo 5G ({{ name }}) - generado por deploy.py.
+# Cuenta la senalizacion entrante (NGAP/SCTP y GTP-U/UDP) para que el SIEM detecte un DDoS, mantiene un
+# conjunto de origenes bloqueados (lo llena el SIEM al mitigar) y limita la tasa de NGAP nuevos como
+# proteccion volumetrica del plano de control, preservando el canal de los dispositivos ya registrados.
+table inet g5 {
+  set bloqueados { type ipv4_addr; flags timeout; }
+  counter ngap {}
+  counter gtpu {}
+  counter ngap_descartado {}
+
+  chain n2n3 {
+    type filter hook input priority -10; policy accept;
+    iif lo accept
+    ct state established,related accept
+    ip saddr @bloqueados counter name ngap_descartado drop
+    udp dport 2152 counter name gtpu
+    meta l4proto sctp ct state new limit rate over {{ c5g.get('ngap_limite', 50) }}/second counter name ngap_descartado drop
+    meta l4proto sctp counter name ngap
+  }
+}

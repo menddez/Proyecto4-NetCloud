@@ -27,6 +27,9 @@ case "$H" in
   ont1)   IP=192.168.122.62; ROLE=host ;;
   ont2)   IP=192.168.122.63; ROLE=host ;;
   ont3)   IP=192.168.122.64; ROLE=host ;;
+  # Entrega 3: Zero Trust
+  dbsrv)   IP=192.168.122.71; ROLE=host ;;
+  pc-corp) IP=192.168.122.72; ROLE=host ;;
   *) echo "hostname desconocido: $H (renombra el nodo en GNS3)"; IP=""; ROLE=host ;;
 esac
 # Levantar todas las interfaces ethX

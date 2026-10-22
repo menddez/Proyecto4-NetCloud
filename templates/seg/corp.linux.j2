@@ -1,0 +1,4 @@
+# Estacion de trabajo corporativa {{ name }} (en la demo representa un equipo comprometido)
+ip addr replace {{ ip }}/24 dev eth0
+ip route replace default via {{ nfv.vip_inside }}
+# El escaner y el generador de trafico se ejecutan bajo demanda desde scripts/prueba_zerotrust.sh

@@ -5,3 +5,6 @@ __pycache__/
 automation/controller_state.json
 automation/nfv_estado.json
 automation/gns3_ids.json
+automation/siem_pb2.py
+automation/siem_pb2_grpc.py
+automation/siem_estado.json

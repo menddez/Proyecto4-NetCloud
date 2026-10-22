@@ -1,0 +1,108 @@
+{% raw %}"""Exportador de telemetria stdlib - desplegado por deploy.py. Puerto por argumento.
+Expone metricas en formato Prometheus en :<puerto>/metrics. Sin dependencias (Alpine y Debian).
+Lo consumen Prometheus (tableros) y el shipper gRPC del SIEM. Metricas: estado del nodo, contadores por
+interfaz (/proc/net/dev), todos los contadores nftables (Zero Trust y firewall) y, segun el rol, 5G y DBA."""
+import json
+import os
+import re
+import socket
+import subprocess
+import sys
+import time
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+
+NODO = socket.gethostname()
+PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 9100
+AMF = "/opt/open5gs/var/log/open5gs/amf.log"
+DBA = "/var/log/dba.csv"
+
+
+def m(nombre, valor, **lbl):
+    etq = ",".join('%s="%s"' % (k, v) for k, v in dict(node=NODO, **lbl).items())
+    return "%s{%s} %s" % (nombre, etq, valor)
+
+
+def ifstats():
+    out = ["# interfaces (contadores del kernel)"]
+    try:
+        for ln in open("/proc/net/dev").read().splitlines()[2:]:
+            iface, resto = ln.split(":")
+            iface = iface.strip()
+            if iface == "lo":
+                continue
+            c = resto.split()
+            out += [m("gsm_if_rx_bytes", c[0], iface=iface), m("gsm_if_rx_packets", c[1], iface=iface),
+                    m("gsm_if_tx_bytes", c[8], iface=iface), m("gsm_if_tx_packets", c[9], iface=iface)]
+    except OSError:
+        pass
+    return out
+
+
+def nft_counters():
+    out = ["# contadores nftables (microsegmentacion y firewall)"]
+    try:
+        j = json.loads(subprocess.run(["nft", "-j", "list", "counters"], capture_output=True,
+                                       text=True, timeout=5).stdout)
+        for item in j.get("nftables", []):
+            c = item.get("counter")
+            if c and "name" in c:
+                out.append(m("gsm_nft_packets", c["packets"], table=c["table"], counter=c["name"]))
+                out.append(m("gsm_nft_bytes", c["bytes"], table=c["table"], counter=c["name"]))
+    except (OSError, ValueError, subprocess.SubprocessError):
+        pass
+    return out
+
+
+def metricas_5g():
+    out = ["# nucleo 5G"]
+    try:
+        log = open(AMF).read()
+        ues = re.findall(r"Number of AMF-UEs is now (\d+)", log)
+        out.append(m("gsm_5g_amf_ues", ues[-1] if ues else 0))
+        out.append(m("gsm_5g_registros_total", len(re.findall(r"Registration complete", log))))
+        out.append(m("gsm_5g_auth_fallidos_total",
+                     len(re.findall(r"Authentication failure|failed|Reject", log))))
+    except OSError:
+        pass
+    return out
+
+
+def metricas_f5g():
+    out = ["# F5G DBA (ultimos grants)"]
+    try:
+        cab, *filas = open(DBA).read().splitlines()
+        cols = cab.split(",")
+        ult = filas[-1].split(",")
+        for i, nombre in enumerate(cols):
+            if nombre.endswith("_grant"):
+                out.append(m("gsm_f5g_grant_mbps", ult[i], ont=nombre[:-6]))
+    except (OSError, IndexError):
+        pass
+    return out
+
+
+class H(BaseHTTPRequestHandler):
+    def do_GET(self):
+        if self.path.rstrip("/") != "/metrics":
+            self.send_response(404)
+            self.end_headers()
+            return
+        lineas = [m("gsm_node_up", 1), m("gsm_scrape_time", int(time.time()))]
+        lineas += ifstats() + nft_counters()
+        if os.path.exists(AMF):
+            lineas += metricas_5g()
+        if os.path.exists(DBA):
+            lineas += metricas_f5g()
+        cuerpo = ("\n".join(lineas) + "\n").encode()
+        self.send_response(200)
+        self.send_header("Content-Type", "text/plain; version=0.0.4")
+        self.send_header("Content-Length", str(len(cuerpo)))
+        self.end_headers()
+        self.wfile.write(cuerpo)
+
+    def log_message(self, *a):
+        pass
+
+
+ThreadingHTTPServer(("0.0.0.0", PORT), H).serve_forever()
+{% endraw %}

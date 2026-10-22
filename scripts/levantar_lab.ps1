@@ -38,7 +38,7 @@ Start-Sleep 15
 $epoch = [DateTimeOffset]::UtcNow.ToUnixTimeSeconds()
 ssh $vm "sudo -n date -u -s @$epoch >/dev/null"
 Write-Host 'Desplegando configuracion (Netmiko) e iniciando el controlador...'
-ssh $vm 'set -o pipefail; bash ~/arranque.sh 2>&1 | grep -v vtysh.conf && rm -f ~/netcloud-secure/automation/controller_state.json && sh ~/netcloud-secure/scripts/controlador.sh && sh ~/netcloud-secure/scripts/orquestador.sh'
+ssh $vm 'set -o pipefail; bash ~/arranque.sh 2>&1 | grep -v vtysh.conf && rm -f ~/netcloud-secure/automation/controller_state.json && sh ~/netcloud-secure/scripts/controlador.sh && sh ~/netcloud-secure/scripts/orquestador.sh && sh ~/netcloud-secure/scripts/monitoreo.sh && sh ~/netcloud-secure/scripts/siem.sh'
 if ($LASTEXITCODE -ne 0) { throw 'Fallo el despliegue: revisa los nodos marcados FALLA arriba' }
 
 Esperar 'Esperando convergencia OSPF/BGP EVPN' 300 {
@@ -51,4 +51,5 @@ Invoke-RestMethod 'http://192.168.56.102:8181/api/topology' -TimeoutSec 60 |
     Format-Table -AutoSize
 Write-Host '5G: sesiones PDU activas en los UEs:'
 ssh $vm 'sh ~/netcloud-secure/scripts/estado_5g.sh'
-Write-Host 'Laboratorio listo. Demostraciones: ver DEFENSA.md (Entrega 1) y DEFENSA2.md (Entrega 2)'
+Write-Host 'Telemetria: Grafana http://192.168.56.102:3000  (tablero netcloud)   Prometheus :9090'
+Write-Host 'Laboratorio listo. Demostraciones: DEFENSA.md (E1), DEFENSA2.md (E2), DEFENSA3.md (E3)'

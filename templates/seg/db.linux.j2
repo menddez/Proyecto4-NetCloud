@@ -1,0 +1,5 @@
+# Base de datos critica {{ name }} en el segmento de servicios OT (VNI 10050)
+ip addr replace {{ ip }}/24 dev eth0
+ip route replace default via {{ nfv.vip_inside }}
+pkill -f /etc/gsm/db.py 2>/dev/null; sleep 0.3
+nohup python3 /etc/gsm/db.py </dev/null >/var/log/db.log 2>&1 &

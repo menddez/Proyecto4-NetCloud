@@ -1,0 +1,5 @@
+# Arranca el exportador de telemetria en segundo plano
+pkill -f /etc/gsm/exporter.py 2>/dev/null; sleep 0.3
+nohup python3 /etc/gsm/exporter.py {{ tel.exporter_port }} </dev/null >/var/log/exporter.log 2>&1 &
+sleep 0.5
+printf "exporter {{ name }}: "; (wget -qO- http://127.0.0.1:{{ tel.exporter_port }}/metrics 2>/dev/null || curl -s http://127.0.0.1:{{ tel.exporter_port }}/metrics) | grep -c gsm_ || echo "sin respuesta"

@@ -8,3 +8,140 @@
 2026-10-21 19:30:21.907 CONMUTACION: fw2 es ACTIVO (VIP 10.40.0.1 / 10.50.0.1) 0.73 s despues del primer sondeo fallido de fw1
 2026-10-21 19:30:31.053 RE-INSTANCIA: fw1 recreado por la API de GNS3 y configurado como RESPALDO en 9.1 s
 2026-10-21 19:35:27.796 orquestador iniciado: activo=fw1, respaldo=fw2, sondeo 0.3 s x 2 fallos
+2026-10-21 22:22:29.846 sondeo fallido de fw1
+2026-10-21 22:22:31.391 CONMUTACION: fw2 es ACTIVO (VIP 10.40.0.1 / 10.50.0.1) 1.55 s despues del primer sondeo fallido de fw1
+2026-10-21 22:22:31.408 ERROR re-instanciando fw1: Unexpected UTF-8 BOM (decode using utf-8-sig): line 1 column 1 (char 0)
+2026-10-21 23:45:10.829 orquestador iniciado: activo=fw1, respaldo=fw2, sondeo 0.3 s x 2 fallos
+2026-10-21 23:48:40.739 sondeo fallido de fw1
+2026-10-21 23:48:41.479 CONMUTACION: fw2 es ACTIVO (VIP 10.40.0.1 / 10.50.0.1) 0.74 s despues del primer sondeo fallido de fw1
+2026-10-21 23:48:51.164 RE-INSTANCIA: fw1 recreado por la API de GNS3 y configurado como RESPALDO en 9.7 s
+2026-10-22 01:03:30.100 sondeo fallido de fw2
+2026-10-22 01:03:40.700 ERROR en la conmutacion: 
+
+Pattern not detected: '[\\$\\#]' in output.
+
+Things you might try to fix this:
+1. Adjust the regex pattern to better identify the terminating string. Note, in
+many situations the pattern is automatically based on the network device's prompt.
+2. Increase the read_timeout to a larger value.
+
+You can also look at the Netmiko session_log or debug log for more information.
+
+
+2026-10-22 01:03:41.254 sondeo fallido de fw2
+2026-10-22 01:03:51.828 ERROR en la conmutacion: 
+
+Pattern not detected: '[\\$\\#]' in output.
+
+Things you might try to fix this:
+1. Adjust the regex pattern to better identify the terminating string. Note, in
+many situations the pattern is automatically based on the network device's prompt.
+2. Increase the read_timeout to a larger value.
+
+You can also look at the Netmiko session_log or debug log for more information.
+
+
+2026-10-22 01:03:52.381 sondeo fallido de fw2
+2026-10-22 01:04:03.054 ERROR en la conmutacion: 
+
+Pattern not detected: '[\\$\\#]' in output.
+
+Things you might try to fix this:
+1. Adjust the regex pattern to better identify the terminating string. Note, in
+many situations the pattern is automatically based on the network device's prompt.
+2. Increase the read_timeout to a larger value.
+
+You can also look at the Netmiko session_log or debug log for more information.
+
+
+2026-10-22 01:04:03.671 sondeo fallido de fw2
+2026-10-22 01:04:14.323 ERROR en la conmutacion: 
+
+Pattern not detected: '[\\$\\#]' in output.
+
+Things you might try to fix this:
+1. Adjust the regex pattern to better identify the terminating string. Note, in
+many situations the pattern is automatically based on the network device's prompt.
+2. Increase the read_timeout to a larger value.
+
+You can also look at the Netmiko session_log or debug log for more information.
+
+
+2026-10-22 01:04:14.874 sondeo fallido de fw2
+2026-10-22 01:04:25.439 ERROR en la conmutacion: 
+
+Pattern not detected: '[\\$\\#]' in output.
+
+Things you might try to fix this:
+1. Adjust the regex pattern to better identify the terminating string. Note, in
+many situations the pattern is automatically based on the network device's prompt.
+2. Increase the read_timeout to a larger value.
+
+You can also look at the Netmiko session_log or debug log for more information.
+
+
+2026-10-22 01:07:56.473 sondeo fallido de fw2
+2026-10-22 01:08:07.070 ERROR en la conmutacion: 
+
+Pattern not detected: '[\\$\\#]' in output.
+
+Things you might try to fix this:
+1. Adjust the regex pattern to better identify the terminating string. Note, in
+many situations the pattern is automatically based on the network device's prompt.
+2. Increase the read_timeout to a larger value.
+
+You can also look at the Netmiko session_log or debug log for more information.
+
+
+2026-10-22 01:08:07.623 sondeo fallido de fw2
+2026-10-22 01:08:18.195 ERROR en la conmutacion: 
+
+Pattern not detected: '[\\$\\#]' in output.
+
+Things you might try to fix this:
+1. Adjust the regex pattern to better identify the terminating string. Note, in
+many situations the pattern is automatically based on the network device's prompt.
+2. Increase the read_timeout to a larger value.
+
+You can also look at the Netmiko session_log or debug log for more information.
+
+
+2026-10-22 01:08:18.749 sondeo fallido de fw2
+2026-10-22 01:08:29.356 ERROR en la conmutacion: 
+
+Pattern not detected: '[\\$\\#]' in output.
+
+Things you might try to fix this:
+1. Adjust the regex pattern to better identify the terminating string. Note, in
+many situations the pattern is automatically based on the network device's prompt.
+2. Increase the read_timeout to a larger value.
+
+You can also look at the Netmiko session_log or debug log for more information.
+
+
+2026-10-22 01:08:29.916 sondeo fallido de fw2
+2026-10-22 01:08:40.491 ERROR en la conmutacion: 
+
+Pattern not detected: '[\\$\\#]' in output.
+
+Things you might try to fix this:
+1. Adjust the regex pattern to better identify the terminating string. Note, in
+many situations the pattern is automatically based on the network device's prompt.
+2. Increase the read_timeout to a larger value.
+
+You can also look at the Netmiko session_log or debug log for more information.
+
+
+2026-10-22 01:08:41.042 sondeo fallido de fw2
+2026-10-22 01:08:51.621 ERROR en la conmutacion: 
+
+Pattern not detected: '[\\$\\#]' in output.
+
+Things you might try to fix this:
+1. Adjust the regex pattern to better identify the terminating string. Note, in
+many situations the pattern is automatically based on the network device's prompt.
+2. Increase the read_timeout to a larger value.
+
+You can also look at the Netmiko session_log or debug log for more information.
+
+

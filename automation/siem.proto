@@ -1,0 +1,17 @@
+syntax = "proto3";
+// SIEM de NetCloud-Secure (Entrega 3): telemetria de seguridad en streaming por gRPC.
+// El shipper abre un stream y empuja muestras en tiempo real; el servidor correlaciona y mitiga.
+package siem;
+
+service Siem {
+  rpc Stream(stream Sample) returns (Ack);
+}
+
+message Sample {
+  string node = 1;
+  string metric = 2;      // p. ej. ztdrop_db_from_corp, ngap_descartado, auth_fallidos
+  double value = 3;       // valor acumulado del contador
+  double ts = 4;          // epoch en segundos
+}
+
+message Ack { int64 recibidos = 1; }

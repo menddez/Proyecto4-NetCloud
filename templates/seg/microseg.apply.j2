@@ -1,0 +1,3 @@
+# Aplica la microsegmentacion Zero Trust (tabla inet zt, sin tocar la tabla sfc del firewall perimetral)
+nft -f /etc/gsm/microseg.nft
+echo "microseg {{ name }} ({{ tag }}): $(nft list counters table inet zt 2>/dev/null | grep -c counter) contadores"

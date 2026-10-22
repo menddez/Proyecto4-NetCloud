@@ -8,3 +8,7 @@ automation/gns3_ids.json
 automation/siem_pb2.py
 automation/siem_pb2_grpc.py
 automation/siem_estado.json
+informe/node_modules/
+informe/package*.json
+informe/*.pdf
+informe/pg-*.jpg

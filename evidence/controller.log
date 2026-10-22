@@ -3009,3 +3009,4 @@ Device settings: linux 192.168.122.22:22
 2026-10-21 22:22:32 [ot-produccion] spine1 no responde: recalculando
 2026-10-21 23:44:43 [ot-produccion] spine1 proteccion local retiro la politica: recalculando
 2026-10-21 23:45:06 controlador escuchando en :8181 (0 intenciones)
+2026-10-22 16:46:49 controlador escuchando en :8181 (0 intenciones)

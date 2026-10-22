@@ -15,8 +15,8 @@ const FONT = 'Times New Roman';
 const AZUL = '1F4E79', GRIS = 'D9E1F2';
 
 // ---- datos de portada (reemplazar los marcadores) ----
-const ESTUDIANTE = '[Nombre del estudiante]';
-const CARNE = '[Carné]';
+const ESTUDIANTE = 'David Antonio Méndez Estrada';
+const CARNE = '090-22-3128';
 const FECHA = '22 de octubre de 2026';
 
 // ---------- helpers ----------

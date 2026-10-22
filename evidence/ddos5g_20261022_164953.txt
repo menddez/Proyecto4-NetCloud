@@ -1,0 +1,53 @@
+# Prueba DDoS en el plano 5G - 2026-10-22 16:49:55
+Robot legitimo (uesimtun0) mantiene su sesion; se inunda el AMF (NGAP 10.30.0.10:38412) con peticiones bogus.
+
+===== Latencia del robot legitimo ANTES del ataque (20 pings a srv1) =====
+20 packets transmitted, 20 received, 0% packet loss, time 3823ms
+rtt min/avg/max/mdev = 1.714/3.857/16.582/3.332 ms
+
+===== g5 (nucleo 5G) antes =====
+		packets 1 bytes 68
+		packets 1 bytes 128
+		packets 0 bytes 0
+
+===== ATAQUE: inundacion de peticiones de conexion (NGAP/SCTP) desde la RAN hacia el AMF =====
+16:49:59 iniciando flood + 12 UEs IoT falsificados (IMSIs no provisionadas)
+
+===== Deteccion y mitigacion del SIEM =====
+2026-10-22 16:50:01 ALERTA DDoS de senalizacion 5G: 16366 peticiones de conexion (NGAP) en 5s (16324 ya descartadas por el limitador del nucleo)
+2026-10-22 16:50:01 MITIGACION: el limitador nft del nucleo descarta el exceso de NGAP nuevos y el AMF rechaza las IMSIs no provisionadas; las sesiones establecidas de los robots se conservan intactas.
+  paquetes de ataque enviados: 331276
+
+===== g5 (nucleo 5G) despues: NGAP aceptado vs descartado por el limitador =====
+table inet g5 {
+	counter ngap {
+		packets 811 bytes 71508
+	}
+	counter gtpu {
+		packets 1 bytes 128
+	}
+	counter ngap_descartado {
+		packets 325341 bytes 29931372
+	}
+}
+
+===== AMF: identidades bogus rechazadas (muestra) =====
+10/22 16:50:00.581: [amf] WARNING: [suci-0-001-01-0000-0-0-0000090007] Registration reject [11] (../src/amf/nas-path.c:211)
+10/22 16:50:00.582: [amf] WARNING: [suci-0-001-01-0000-0-0-0000090008] Registration reject [11] (../src/amf/nas-path.c:211)
+10/22 16:50:00.582: [amf] WARNING: [suci-0-001-01-0000-0-0-0000090009] Registration reject [11] (../src/amf/nas-path.c:211)
+10/22 16:50:00.808: [amf] WARNING: [suci-0-001-01-0000-0-0-0000090010] Registration reject [11] (../src/amf/nas-path.c:211)
+10/22 16:50:00.812: [amf] WARNING: [suci-0-001-01-0000-0-0-0000090011] Registration reject [11] (../src/amf/nas-path.c:211)
+10/22 16:50:01.031: [amf] WARNING: [suci-0-001-01-0000-0-0-0000090012] Registration reject [11] (../src/amf/nas-path.c:211)
+
+===== Robot legitimo DURANTE el ataque (debe conservar sesion y latencia < 10 ms) =====
+600 packets transmitted, 598 received, 0.333333% packet loss, time 30601ms
+rtt min/avg/max/mdev = 1.323/9.778/128.748/12.246 ms, pipe 3
+Sesion PDU del robot legitimo:
+[2026-10-22 16:46:44.621] [app] [info] Connection setup for PDU session[1] is successful, TUN interface[uesimtun0, 10.45.0.2] is up.
+
+===== RESULTADO =====
+Robot legitimo: 598 de 600 pings recibidos durante el ataque (perdida = 2)
+El limitador del nucleo (tabla g5) descarto el exceso de NGAP y el AMF rechazo las IMSIs bogus;
+la sesion y la latencia (< 10 ms) del robot legitimo se mantuvieron.
+
+Evidencia: /home/gns3/netcloud-secure/evidence/ddos5g_20261022_164953.txt
